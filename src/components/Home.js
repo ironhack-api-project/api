@@ -1,20 +1,37 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { isCompositeComponent } from "react-dom/test-utils";
 
 function Home(props) {
   let [events, setEvents] = useState([]);
 
-  const handleClick = (e) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let eventKeyWord = e.target[0].value;
+    let eventCity = e.target[1].value;
+    let eventDate = e.target[2].value;
+    console.log(eventDate);
+
+    let linkApi =
+      "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&keyword=";
+
+    let keyApi = "biW1fGE1aeVKqhiGWAdGttCRSItyVN2z";
+    // ("city=${eventCity}&keyword=tinashe&apikey=");
+
+    let linkToAxios =
+      linkApi +
+      eventKeyWord +
+      "&city=" +
+      eventCity +
+      "&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z";
+    console.log(linkToAxios);
+
     axios
       .get(
         "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z"
       )
       .then((resApi) => {
-        // console.log(`it's working`);
         setEvents(resApi.data._embedded.events);
-        // console.log(resApi.data._embedded.events.dates);
       });
   };
 
@@ -23,13 +40,12 @@ function Home(props) {
       <div>
         {events.map((uniqueEvent) => {
           let img = [...uniqueEvent.images].filter((im) => im.width > 1000);
-          console.log(uniqueEvent.dates.start);
           return (
             <div key={uniqueEvent.id}>
               <img src={img[0].url} width="500" />
               <div>{uniqueEvent.name} </div>
               <div>Time: {uniqueEvent.dates.start.localTime}</div>
-             <div> Date: {uniqueEvent.dates.start.localDate}</div>
+              <div> Date: {uniqueEvent.dates.start.localDate}</div>
             </div>
           );
         })}
@@ -57,11 +73,20 @@ function Home(props) {
     <div>
       <div className="tagline">Let us help you find plans...</div>
       <div className="boxes">
-        <form>
-          <input type="text" placeholder="City" />
-          <input type="text" placeholder="Date" />
+        <form onSubmit={handleSubmit}>
+          <div className="input">
+            <input type="text" placeholder="Event" />
+          </div>
+          <div className="input">
+            <input type="text" placeholder="City" />
+          </div>
+          <div className="input">
+            <input type="date" placeholder="Date" />
+          </div>
+          <div className="button">
+          <button>Search event</button>
+          </div>
         </form>
-        <button onClick={handleClick}>Search</button>
       </div>
       <ShowEvents />
     </div>

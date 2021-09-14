@@ -35,19 +35,34 @@ header h1 {
   padding-top: 50px;
 }
 
-input {
+.input {
+  padding: 10px;
+}
+
+input,
+select,
+textarea {
   background: #ffffff;
   border: 3px solid #ff7684;
   box-sizing: border-box;
   border-radius: 7px;
-  padding: 5px;
+  padding: 10px;
+  width: 400px;
+  font-size: 1em;
+  color: #000;
+}
+
+input[type="date"] {
+  font-family: "Roboto", sans-serif;
 }
 
 button {
   background: #277292;
   border-radius: 11px;
-  padding: 5px;
+  padding: 10px;
   color: #fff;
+  font-size: 1em;
+  border: none;
 }
 
 .boxes {
@@ -56,4 +71,8 @@ button {
   align-items: center;
   flex-direction: column;
   padding: 25px;
+}
+.button{
+  display: flex;
+  justify-content: center;
 }
