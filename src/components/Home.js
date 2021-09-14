@@ -15,16 +15,12 @@ function Home(props) {
     let linkApi =
       "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&keyword=";
 
-    let keyApi = "biW1fGE1aeVKqhiGWAdGttCRSItyVN2z";
-    // ("city=${eventCity}&keyword=tinashe&apikey=");
-
     let linkToAxios =
       linkApi +
       eventKeyWord +
       "&city=" +
       eventCity +
       "&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z";
-    console.log(typeof linkToAxios);
 
     axios.get(linkToAxios).then((resApi) => {
       setEvents(resApi.data._embedded.events);
@@ -80,7 +76,7 @@ function Home(props) {
             <input type="date" placeholder="Date" />
           </div>
           <div className="button">
-          <button>Search event</button>
+            <button>Search event</button>
           </div>
         </form>
       </div>
