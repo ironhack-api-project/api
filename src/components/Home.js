@@ -24,15 +24,11 @@ function Home(props) {
       "&city=" +
       eventCity +
       "&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z";
-    console.log(linkToAxios);
+    console.log(typeof linkToAxios);
 
-    axios
-      .get(
-        "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z"
-      )
-      .then((resApi) => {
-        setEvents(resApi.data._embedded.events);
-      });
+    axios.get(linkToAxios).then((resApi) => {
+      setEvents(resApi.data._embedded.events);
+    });
   };
 
   const ShowEvents = () => {
