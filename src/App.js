@@ -9,7 +9,10 @@ import Events from "./components/Events";
 function App() {
   return (
     <div className="App">
-      <h1>App.js</h1>
+      <header>
+        <span className="ticket">🎟️</span>
+        <h1>getBooked</h1>
+      </header>
 
       <Switch>
         <Route exact path="/" component={Home} />
