@@ -11,6 +11,7 @@ function Home(props) {
   <input type="text" placeholder="Date"/>
   <input type="text" placeholder="Radius"/>
   </form>
+  <button onClick="">Search</button>
 </div>
   );
 }
