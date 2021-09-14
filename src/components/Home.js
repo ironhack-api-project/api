@@ -28,8 +28,8 @@ function Home(props) {
             <div key={uniqueEvent.id}>
               <img src={img[0].url} width="500" />
               <div>{uniqueEvent.name} </div>
-              <div>{uniqueEvent.dates.start.localTime}</div>
-             <div> {uniqueEvent.dates.start.localDate}</div>
+              <div>Time: {uniqueEvent.dates.start.localTime}</div>
+             <div> Date: {uniqueEvent.dates.start.localDate}</div>
             </div>
           );
         })}
