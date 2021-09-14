@@ -72,3 +72,7 @@ button {
   flex-direction: column;
   padding: 25px;
 }
+.button{
+  display: flex;
+  justify-content: center;
+}

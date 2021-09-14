@@ -79,7 +79,9 @@ function Home(props) {
           <div className="input">
             <input type="date" placeholder="Date" />
           </div>
+          <div className="button">
           <button>Search event</button>
+          </div>
         </form>
       </div>
       <ShowEvents />
