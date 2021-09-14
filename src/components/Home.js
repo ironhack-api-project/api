@@ -21,12 +21,10 @@ function Home(props) {
     return (
       <div>
         {events.map((uniqueEvent) => {
-        let img=uniqueEvent.images.sort((a,b)=>{
-
-        })
+        
           return <div key={uniqueEvent.id}>{uniqueEvent.name}
           
-          
+  
           </div>;
         })}
       </div>
