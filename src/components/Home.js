@@ -35,6 +35,7 @@ function Home(props) {
     return (
       <div>
         {events.map((uniqueEvent) => {
+         
           let img = [...uniqueEvent.images].filter((im) => im.width > 1000);
           return (
             <div key={uniqueEvent.id}>
@@ -42,6 +43,7 @@ function Home(props) {
               <div>{uniqueEvent.name} </div>
               <div>Time: {uniqueEvent.dates.start.localTime}</div>
               <div> Date: {uniqueEvent.dates.start.localDate}</div>
+             
             </div>
           );
         })}
