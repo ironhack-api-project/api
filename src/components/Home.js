@@ -60,7 +60,6 @@ function Home(props) {
         <form>
           <input type="text" placeholder="City" />
           <input type="text" placeholder="Date" />
-          <input type="text" placeholder="Radius" />
         </form>
         <button onClick={handleClick}>Search</button>
       </div>
