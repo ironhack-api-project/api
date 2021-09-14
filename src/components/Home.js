@@ -13,7 +13,7 @@ function Home(props) {
       )
       .then((resApi) => {
         setEvents(resApi.data._embedded.events);
-        console.log(resApi.data._embedded.events[0].images);
+        console.log(resApi.data._embedded.events[0].images[0].width);
       });
   };
 
@@ -21,7 +21,9 @@ function Home(props) {
     return (
       <div>
         {events.map((uniqueEvent) => {
-        
+        let img=uniqueEvent.images.sort((a,b)=>{
+
+        })
           return <div key={uniqueEvent.id}>{uniqueEvent.name}
           
           
