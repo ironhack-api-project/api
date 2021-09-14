@@ -33,17 +33,16 @@ function Home(props) {
 
   const ShowEvents = () => {
     return (
-      <div>
+      <div className="events">
         {events.map((uniqueEvent) => {
          
           let img = [...uniqueEvent.images].filter((im) => im.width > 1000);
           return (
             <div key={uniqueEvent.id}>
               <img src={img[0].url} width="500" />
-              <div>{uniqueEvent.name} </div>
-              <div>Time: {uniqueEvent.dates.start.localTime}</div>
-              <div> Date: {uniqueEvent.dates.start.localDate}</div>
-             
+              <div><h2>{uniqueEvent.name}</h2></div>
+              <div><strong>Time</strong>: {uniqueEvent.dates.start.localTime}</div>
+              <div><strong>Date</strong>: {uniqueEvent.dates.start.localDate}</div>
             </div>
           );
         })}

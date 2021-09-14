@@ -72,7 +72,15 @@ button {
   flex-direction: column;
   padding: 25px;
 }
-.button{
+
+.button {
   display: flex;
   justify-content: center;
+}
+
+.events {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
 }
