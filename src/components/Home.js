@@ -14,7 +14,7 @@ function Home(props) {
       .then((resApi) => {
         // console.log(`it's working`);
         setEvents(resApi.data._embedded.events);
-        // console.log(resApi.data._embedded.events);
+        // console.log(resApi.data._embedded.events.dates);
       });
   };
 
@@ -23,11 +23,13 @@ function Home(props) {
       <div>
         {events.map((uniqueEvent) => {
           let img = [...uniqueEvent.images].filter((im) => im.width > 1000);
-          console.log(img);
+          console.log(uniqueEvent.dates.start);
           return (
             <div key={uniqueEvent.id}>
-              {uniqueEvent.name}
-              <img src={img[0].url} />
+              <img src={img[0].url} width="500" />
+              <div>{uniqueEvent.name} </div>
+              <div>{uniqueEvent.dates.start.localTime}</div>
+             <div> {uniqueEvent.dates.start.localDate}</div>
             </div>
           );
         })}
