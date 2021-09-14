@@ -9,7 +9,7 @@ function Home(props) {
   const handleClick = (e) => {
     axios
       .get(
-        "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z"
+        "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&city=miami&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z"
       )
       .then((resApi) => {
         // console.log(`it's working`);
@@ -58,12 +58,13 @@ function Home(props) {
       <div className="tagline">Let us help you find plans...</div>
       <div className="boxes">
         <form>
-          <input type="text" placeholder="City" />
-          <input type="text" placeholder="Date" />
+          <div className="input"><input type="text" placeholder="City" /></div>
+          <div className="input"><input type="date" placeholder="Date" /></div>
         </form>
         <button onClick={handleClick}>Search</button>
       </div>
-      <ShowEvents />
+        <ShowEvents />
+
     </div>
   );
 }

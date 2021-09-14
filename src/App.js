@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <span className="ticket"><img src={ticket} width="50" alt="ticket" /></span>
+        <Link to="/"><span className="ticket"><img src={ticket} width="50" alt="ticket" /></span></Link>
         <h1>getBooked</h1>
       </header>
 
