@@ -5,16 +5,33 @@ import axios from "axios";
 function Home(props) {
   let [events, setEvents] = useState([]);
 
-  const handleClick = (e) => {
-    console.log(e.target.value);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let eventKeyWord = e.target[0].value;
+    let eventCity = e.target[1].value;
+    let eventDate = e.target[2].value;
+    console.log(eventDate);
+
+    let linkApi =
+      "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&keyword=";
+
+    let keyApi = "biW1fGE1aeVKqhiGWAdGttCRSItyVN2z";
+    // ("city=${eventCity}&keyword=tinashe&apikey=");
+
+    let linkToAxios =
+      linkApi +
+      eventKeyWord +
+      "&city=" +
+      eventCity +
+      "&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z";
+    console.log(linkToAxios);
+
     axios
       .get(
         "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z"
       )
       .then((resApi) => {
-        // console.log(`it's working`);
         setEvents(resApi.data._embedded.events);
-        // console.log(resApi.data._embedded.events.dates);
       });
   };
 
@@ -57,10 +74,17 @@ function Home(props) {
       <div className="tagline">Let us help you find plans...</div>
       <div className="boxes">
         <form onSubmit={handleSubmit}>
-          <input type="text" placeholder="City" />
-          <input type="text" placeholder="Date" />
+          <div className="input">
+            <input type="text" placeholder="Event" />
+          </div>
+          <div className="input">
+            <input type="text" placeholder="City" />
+          </div>
+          <div className="input">
+            <input type="date" placeholder="Date" />
+          </div>
+          <button>Search event</button>
         </form>
-        <button onClick={handleClick}>Search</button>
       </div>
       <ShowEvents />
     </div>
