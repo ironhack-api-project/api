@@ -1,13 +1,18 @@
 import React from "react";
 
 function Home(props) {
-<<<<<<< HEAD
-  return <div>Let us help you find plans...</div>;
-=======
-  return <div>
-    Let us help you find plans...
-  </div>;
->>>>>>> 3d03fcd108e2f39fe70143f24a84dfd848aca0bc
+  return (
+  <div>Let us help you find plans...
+<form>
+  <input type="text" placeholder="City"/>
+  <input type="text" placeholder="Zip Code"/>
+</form>
+<form>
+  <input type="text" placeholder="Date"/>
+  <input type="text" placeholder="Radius"/>
+  </form>
+</div>
+  );
 }
 
 export default Home;
