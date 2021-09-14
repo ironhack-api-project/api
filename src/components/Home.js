@@ -43,8 +43,8 @@ function Home(props) {
     }
   };
   const showPosition = (position) => {
-    console.log(position.coords.latitude);
-    console.log(position.coords.longitude);
+    // console.log(position.coords.latitude);
+    // console.log(position.coords.longitude);
   };
 
   useEffect(() => {
