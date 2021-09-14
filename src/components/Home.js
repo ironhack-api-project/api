@@ -12,8 +12,9 @@ function Home(props) {
         "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z"
       )
       .then((resApi) => {
+        // console.log(`it's working`);
         setEvents(resApi.data._embedded.events);
-        console.log(resApi.data._embedded.events[0].images[0].width);
+        // console.log(resApi.data._embedded.events.dates);
       });
   };
 
@@ -21,11 +22,16 @@ function Home(props) {
     return (
       <div>
         {events.map((uniqueEvent) => {
-        
-          return <div key={uniqueEvent.id}>{uniqueEvent.name}
-          
-  
-          </div>;
+          let img = [...uniqueEvent.images].filter((im) => im.width > 1000);
+          console.log(uniqueEvent.dates.start);
+          return (
+            <div key={uniqueEvent.id}>
+              <img src={img[0].url} width="500" />
+              <div>{uniqueEvent.name} </div>
+              <div>{uniqueEvent.dates.start.localTime}</div>
+             <div> {uniqueEvent.dates.start.localDate}</div>
+            </div>
+          );
         })}
       </div>
     );
