@@ -1,8 +1,26 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { isCompositeComponent } from "react-dom/test-utils";
 
 function Home(props) {
+  let [events, setEvents] = useState();
+
+  const handleClick = (e) => {
+    axios
+      .get(
+        "https://app.ticketmaster.com/discovery/v2/events.json?size=1&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z"
+      )
+      .then((resApi) => {
+        console.log(`it's working`);
+        console.log(resApi.data._embedded.events);
+      });
+  };
+
+  const ShowEvents = () => {
+    return <div>here</div>;
+  };
+
   const getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
@@ -20,17 +38,18 @@ function Home(props) {
   }, []);
 
   return (
-  <div>
-    <span className="tagline">Let us help you find plans...</span>
-    <div className="boxes">
-  <form>
-    <input type="text" placeholder="City"/>
-    <input type="text" placeholder="Date"/>
-    <input type="text" placeholder="Radius"/>
-    </form>
-  <button onClick="">Search</button>
-  </div>
-  </div>
+    <div>
+      <div className="tagline">Let us help you find plans...</div>
+      <div className="boxes">
+        <form>
+          <input type="text" placeholder="City" />
+          <input type="text" placeholder="Date" />
+          <input type="text" placeholder="Radius" />
+        </form>
+        <button onClick={handleClick}>Search</button>
+      </div>
+      <ShowEvents />
+    </div>
   );
 }
 

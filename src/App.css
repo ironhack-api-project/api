@@ -31,6 +31,8 @@ header h1 {
 /* Body */
 .tagline {
   font-size: 3em;
+  text-align: center;
+  padding-top: 50px;
 }
 
 input {
@@ -47,9 +49,11 @@ button {
   padding: 5px;
   color: #fff;
 }
-.boxes{
+
+.boxes {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  justify-content: column;
+  flex-direction: column;
+  padding: 25px;
 }
