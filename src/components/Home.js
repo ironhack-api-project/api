@@ -6,6 +6,7 @@ function Home(props) {
   let [events, setEvents] = useState([]);
 
   const handleClick = (e) => {
+    console.log(e.target.value);
     axios
       .get(
         "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z"
@@ -22,13 +23,12 @@ function Home(props) {
       <div>
         {events.map((uniqueEvent) => {
           let img = [...uniqueEvent.images].filter((im) => im.width > 1000);
-          console.log(uniqueEvent.dates.start);
           return (
             <div key={uniqueEvent.id}>
               <img src={img[0].url} width="500" />
               <div>{uniqueEvent.name} </div>
-              <div>{uniqueEvent.dates.start.localTime}</div>
-              <div> {uniqueEvent.dates.start.localDate}</div>
+              <div>Time: {uniqueEvent.dates.start.localTime}</div>
+              <div> Date: {uniqueEvent.dates.start.localDate}</div>
             </div>
           );
         })}
@@ -56,10 +56,9 @@ function Home(props) {
     <div>
       <div className="tagline">Let us help you find plans...</div>
       <div className="boxes">
-        <form>
+        <form onSubmit={handleSubmit}>
           <input type="text" placeholder="City" />
           <input type="text" placeholder="Date" />
-          <input type="text" placeholder="Radius" />
         </form>
         <button onClick={handleClick}>Search</button>
       </div>
