@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Home(props) {
   let [events, setEvents] = useState([]);
@@ -9,8 +10,7 @@ function Home(props) {
     e.preventDefault();
     let eventKeyWord = e.target[0].value;
     let eventCity = e.target[1].value;
-    let eventDate = e.target[2].value;
-    console.log(eventDate);
+    // let eventDate = e.target[2].value;
 
     let linkApi =
       "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&keyword=";
@@ -34,32 +34,24 @@ function Home(props) {
           let img = [...uniqueEvent.images].filter((im) => im.width > 1000);
           return (
             <div key={uniqueEvent.id}>
-              <img src={img[0].url} width="500" />
-              <div><h2>{uniqueEvent.name}</h2></div>
-              <div><strong>Time</strong>: {uniqueEvent.dates.start.localTime}</div>
-              <div><strong>Date</strong>: {uniqueEvent.dates.start.localDate}</div>
+              <Link to={`/events/${uniqueEvent.id}`}>
+                <img src={img[0].url} width="500" />
+                <div>
+                  <h2>{uniqueEvent.name}</h2>
+                </div>
+                <div>
+                  <strong>Time</strong>: {uniqueEvent.dates.start.localTime}
+                </div>
+                <div>
+                  <strong>Date</strong>: {uniqueEvent.dates.start.localDate}
+                </div>
+              </Link>
             </div>
           );
         })}
       </div>
     );
   };
-
-  const getLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-      //   x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-  };
-  const showPosition = (position) => {
-    // console.log(position.coords.latitude);
-    // console.log(position.coords.longitude);
-  };
-
-  useEffect(() => {
-    getLocation();
-  }, []);
 
   return (
     <div>
