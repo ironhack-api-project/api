@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { isCompositeComponent } from "react-dom/test-utils";
 
 function Home(props) {
   let [events, setEvents] = useState([]);
@@ -29,7 +28,7 @@ function Home(props) {
               <img src={img[0].url} width="500" />
               <div>{uniqueEvent.name} </div>
               <div>{uniqueEvent.dates.start.localTime}</div>
-             <div> {uniqueEvent.dates.start.localDate}</div>
+              <div> {uniqueEvent.dates.start.localDate}</div>
             </div>
           );
         })}
