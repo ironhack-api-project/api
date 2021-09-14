@@ -4,21 +4,31 @@ import axios from "axios";
 import { isCompositeComponent } from "react-dom/test-utils";
 
 function Home(props) {
-  let [events, setEvents] = useState();
+  let [events, setEvents] = useState([]);
 
   const handleClick = (e) => {
     axios
       .get(
-        "https://app.ticketmaster.com/discovery/v2/events.json?size=1&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z"
+        "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z"
       )
       .then((resApi) => {
-        console.log(`it's working`);
-        console.log(resApi.data._embedded.events);
+        setEvents(resApi.data._embedded.events);
+        console.log(resApi.data._embedded.events[0].images);
       });
   };
 
   const ShowEvents = () => {
-    return <div>here</div>;
+    return (
+      <div>
+        {events.map((uniqueEvent) => {
+        
+          return <div key={uniqueEvent.id}>{uniqueEvent.name}
+          
+          
+          </div>;
+        })}
+      </div>
+    );
   };
 
   const getLocation = () => {
@@ -29,8 +39,8 @@ function Home(props) {
     }
   };
   const showPosition = (position) => {
-    console.log(position.coords.latitude);
-    console.log(position.coords.longitude);
+    // console.log(position.coords.latitude);
+    // console.log(position.coords.longitude);
   };
 
   useEffect(() => {
