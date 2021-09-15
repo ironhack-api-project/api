@@ -16,7 +16,7 @@ import axios from "axios";
 function Events(props) {
   let [event, setEvent] = useState({});
   let [seatMap, setSeatMap] = useState(false);
-  let [img, setImg] = useState([]);
+  let [img, setImg] = useState("");
 
   useEffect(() => {
     axios
@@ -27,7 +27,7 @@ function Events(props) {
         setEvent(resApi.data._embedded.events[0]);
         console.log(resApi.data._embedded.events[0]);
         setImg(
-          resApi.data._embedded.events[0].images.filter((im) => im.width > 1000)
+          resApi.data._embedded.events[0].images.find((im) => im.width > 1000)
         );
       });
   }, []);
@@ -35,30 +35,45 @@ function Events(props) {
   return (
     <div>
       <div>
-        <img src={img[0]?.url} width="500" />
+          {/* Display Image  */}
+        <img src={img?.url} width="500" />
         <h1>{event.name}</h1>
-        <h2>
-          Price Ranges: ${event.priceRanges?.[0]?.min} to $
-          {event.priceRanges?.[0]?.max}
-        </h2>
+
+          {/* Display Price Range */}
+        {!event.priceRanges?.[0]?.min ? null : (
+          <h2>
+            Price Ranges: ${event.priceRanges?.[0]?.min} to $
+            {event.priceRanges?.[0]?.max}
+          </h2>
+        )}
+
+          {/* Display event promoter */}
+          {!event.promoter?.description ? null:(
         <h3>{event.promoter?.description}</h3>
+        )}
+
+          {/* Display Event Date */}
+        {event.dates?.start?.localDate ? null : (
         <h3>Date: {event.dates?.start?.localDate}</h3>
+        )}
+
+          {/* Display Event Time */}
+        {!event.dates?.start?.localTime ? null:(
         <h3>Event starts at: {event.dates?.start?.localTime}</h3>
+        )}
+
+          {/*Display Seat Map  */}
         {!seatMap ? (
           <button onClick={() => setSeatMap(!seatMap)}>See Seatmap</button>
-        ) : (
-          ""
-        )}
+        ) : null}
 
         {seatMap ? (
           <div>
             <button onClick={() => setSeatMap(!seatMap)}>Hide Seatmap</button>
             <br />
-            <img src={event.seatmap.staticUrl} width="500" />
+            <img src={event.seatmap?.staticUrl} width="500" />
           </div>
-        ) : (
-          ""
-        )}
+        ) : null}
       </div>
     </div>
   );
