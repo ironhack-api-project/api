@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import backarrow from "../backarrow.png";
+import price from "../price.png";
+import ticketmaster from "../ticketmaster.png";
 
 function Events(props) {
   let [event, setEvent] = useState({});
@@ -57,11 +59,15 @@ function Events(props) {
           <div className="information">
             <div className="information_left">
               <div className="dateandtime">
+                <h3>
+                    Address: {event._embedded?.venues?.[0]?.address?.line1}
+                  </h3>
+                  <br></br>
                 {/* Display Event Date */}
                 {!event.dates?.start?.localDate ? null : (
                   <h3>Date: {event.dates?.start?.localDate}</h3>
                 )}
-
+                <br></br>
                 {/* Display Event Time */}
                 {!event.dates?.start?.localTime ? null : (
                   <h3>Event starts at: {event.dates?.start?.localTime}</h3>
@@ -72,13 +78,13 @@ function Events(props) {
                 {/* Display Price Range */}
                 {!event.priceRanges?.[0]?.min ? null : (
                   <h4>
-                    Price Ranges: ${event.priceRanges?.[0]?.min} to $
+                    <img src={price} /> Price Ranges: ${event.priceRanges?.[0]?.min} to $
                     {event.priceRanges?.[0]?.max}
                   </h4>
                 )}
               </div>
               <br></br>
-              <div className="ticketmaster">Ticketmaster</div>
+              <div className="ticketmaster"><img src={ticketmaster} /> Ticketmaster</div>
             </div>
             <div className="information_right">
               {/* Display event promoter */}
@@ -100,9 +106,7 @@ function Events(props) {
                   <img
                     src={event._embedded?.venues?.[0]?.images?.[0]?.url}
                   ></img>
-                  <h4>
-                    Address: {event._embedded?.venues?.[0]?.address?.line1}
-                  </h4>
+
                 </div>
               )}
               {/* Display seat map */}
