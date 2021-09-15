@@ -47,7 +47,7 @@ function Events(props) {
           <div className="information_left">
             <div className="dateandtime">
               {/* Display Event Date */}
-              {event.dates?.start?.localDate ? null : (
+              {!event.dates?.start?.localDate ? null : (
                 <h3>Date: {event.dates?.start?.localDate}</h3>
               )}
 
