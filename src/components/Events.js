@@ -25,8 +25,10 @@ function Events(props) {
   return (
     <div>
       <div>
-        <img src={img[0]?.url} width="500" />
-        <h1>{event.name}</h1>
+        <div className="eventsimage">
+          <img src={img[0]?.url} width="100%" />
+          <div class="eventtitle"><h1>{event.name}</h1></div>
+        </div>
         <h2>
           Price Ranges: ${event.priceRanges?.[0]?.min} to $
           {event.priceRanges?.[0]?.max}
