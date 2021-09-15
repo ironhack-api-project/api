@@ -27,30 +27,43 @@ function Events(props) {
       <div>
         <div className="eventsimage">
           <img src={img[0]?.url} width="100%" />
-          <div class="eventtitle"><h1>{event.name}</h1></div>
+          <div class="eventtitle">
+            <h1>{event.name}</h1>
+          </div>
         </div>
-        <h2>
-          Price Ranges: ${event.priceRanges?.[0]?.min} to $
-          {event.priceRanges?.[0]?.max}
-        </h2>
-        <h3>{event.promoter?.description}</h3>
-        <h3>Date: {event.dates?.start?.localDate}</h3>
-        <h3>Event starts at: {event.dates?.start?.localTime}</h3>
+        {/* Display Price Range */}
+        {!event.priceRanges?.[0]?.min ? null : (
+          <h2>
+            Price Ranges: ${event.priceRanges?.[0]?.min} to $
+            {event.priceRanges?.[0]?.max}
+          </h2>
+        )}
+
+        {/* Display event promoter */}
+        {!event.promoter?.description ? null : (
+          <h3>{event.promoter?.description}</h3>
+        )}
+
+        {/* Display Event Date */}
+        {event.dates?.start?.localDate ? null : (
+          <h3>Date: {event.dates?.start?.localDate}</h3>
+        )}
+
+        {/* Display Event Time */}
+        {!event.dates?.start?.localTime ? null : (
+          <h3>Event starts at: {event.dates?.start?.localTime}</h3>
+        )}
         {!seatMap ? (
           <button onClick={() => setSeatMap(!seatMap)}>See Seatmap</button>
-        ) : (
-          ""
-        )}
+        ) : null}
 
         {seatMap ? (
           <div>
             <button onClick={() => setSeatMap(!seatMap)}>Hide Seatmap</button>
             <br />
-            <img src={event.seatmap.staticUrl} width="500" />
+            <img src={event.seatmap?.staticUrl} width="500" />
           </div>
-        ) : (
-          ""
-        )}
+        ) : null}
       </div>
     </div>
   );
