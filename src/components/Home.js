@@ -32,6 +32,9 @@ function Home(props) {
       <div className="events">
         {events.map((uniqueEvent) => {
           let img = [...uniqueEvent.images].filter((im) => im.width > 1000);
+          let city = [...uniqueEvent._embedded.venues].map((venue) => {
+            return venue.city;
+          });
           return (
             <div key={uniqueEvent.id}>
               <Link to={`/events/${uniqueEvent.id}`}>
@@ -39,6 +42,10 @@ function Home(props) {
                 <div>
                   <h2>{uniqueEvent.name}</h2>
                 </div>
+                <div>
+                  <strong>City</strong>: {city[0].name}
+                </div>
+
                 <div>
                   <strong>Time</strong>: {uniqueEvent.dates.start.localTime}
                 </div>
