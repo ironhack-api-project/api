@@ -36,6 +36,11 @@ function Events(props) {
         </div>
         <div class="container">
         <button className="goback" onClick={() => history.goBack()}><img src={backarrow} /> Back to Results</button>
+        <br></br>
+        <br></br>
+        <div className="covid">
+          <p>Covid Restrictions</p>
+        </div>
         {/* Display Price Range */}
         {!event.priceRanges?.[0]?.min ? null : (
           <h2>
