@@ -41,39 +41,58 @@ function Events(props) {
         <div className="covid">
           <p>Covid Restrictions</p>
         </div>
-        {/* Display Price Range */}
-        {!event.priceRanges?.[0]?.min ? null : (
-          <h2>
-            Price Ranges: ${event.priceRanges?.[0]?.min} to $
-            {event.priceRanges?.[0]?.max}
-          </h2>
-        )}
+        <br></br>
+        <br></br>
+        <div className="information">
+          <div className="information_left">
+            <div className="dateandtime">
+              {/* Display Event Date */}
+              {event.dates?.start?.localDate ? null : (
+                <h3>Date: {event.dates?.start?.localDate}</h3>
+              )}
 
-        {/* Display event promoter */}
-        {!event.promoter?.description ? null : (
-          <h3>{event.promoter?.description}</h3>
-        )}
-
-        {/* Display Event Date */}
-        {event.dates?.start?.localDate ? null : (
-          <h3>Date: {event.dates?.start?.localDate}</h3>
-        )}
-
-        {/* Display Event Time */}
-        {!event.dates?.start?.localTime ? null : (
-          <h3>Event starts at: {event.dates?.start?.localTime}</h3>
-        )}
+              {/* Display Event Time */}
+              {!event.dates?.start?.localTime ? null : (
+                <h3>Event starts at: {event.dates?.start?.localTime}</h3>
+              )}
+            </div>
+            <br></br>
+            <div className="price">
+              {/* Display Price Range */}
+              {!event.priceRanges?.[0]?.min ? null : (
+                <h4>
+                  Price Ranges: ${event.priceRanges?.[0]?.min} to $
+                  {event.priceRanges?.[0]?.max}
+                </h4>
+              )}
+            </div>
+            <br></br>
+            <div className="ticketmaster">
+              Ticketmaster
+            </div>
+          </div>
+          <div className="information_right">
+          {/* Display event promoter */}
+          {!event.promoter?.description ? null : (
+            <h3>{event.promoter?.description}</h3>
+          )}
+          <br></br>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ridiculus aliquam velit sit morbi lorem tempus. Pellentesque ornare ultrices massa fermentum. Pharetra consectetur ac vel hendrerit eu aliquet metus. Fermentum sit lectus pretium vitae scelerisque vitae, vitae lorem fringilla. Enim elementum enim aliquam in eu. Risus sit sed accumsan neque elit adipiscing sem.<br></br>
+          <br></br>
+                  {/* Display seat map */}
         {!seatMap ? (
-          <button onClick={() => setSeatMap(!seatMap)}>See Seatmap</button>
+          <button className="seatmapbutton" onClick={() => setSeatMap(!seatMap)}>See Seatmap</button>
         ) : null}
 
         {seatMap ? (
           <div>
-            <button onClick={() => setSeatMap(!seatMap)}>Hide Seatmap</button>
+            <button className="seatmapbutton" onClick={() => setSeatMap(!seatMap)}>Hide Seatmap</button>
             <br />
             <img src={event.seatmap?.staticUrl} width="500" />
           </div>
         ) : null}
+          </div>
+        </div>
         </div>
       </div>
     </div>
