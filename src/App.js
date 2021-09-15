@@ -4,6 +4,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import Home from "./components/Home";
 import Events from "./components/Events";
 import ticket from "./ticket.png";
+import Results from "./components/Results";
 
 //Ticketmaster API Key = biW1fGE1aeVKqhiGWAdGttCRSItyVN2z
 
@@ -22,6 +23,8 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/events/:eventId" component={Events} />
+
+        <Route exact path="/results" component={Results} />
       </Switch>
     </div>
   );

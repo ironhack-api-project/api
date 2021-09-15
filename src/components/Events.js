@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -7,6 +7,8 @@ function Events(props) {
   let [event, setEvent] = useState({});
   let [seatMap, setSeatMap] = useState(false);
   let [img, setImg] = useState([]);
+
+  let history = useHistory();
 
   useEffect(() => {
     axios
@@ -30,6 +32,7 @@ function Events(props) {
           <div class="eventtitle">
             <h1>{event.name}</h1>
           </div>
+          <div onClick={() => history.goBack()}>Back to Results</div>
         </div>
         {/* Display Price Range */}
         {!event.priceRanges?.[0]?.min ? null : (
