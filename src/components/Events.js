@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import backarrow from '../backarrow.png';
+import backarrow from "../backarrow.png";
 
 function Events(props) {
   let [event, setEvent] = useState({});
@@ -18,12 +18,12 @@ function Events(props) {
       )
       .then((resApi) => {
         setEvent(resApi.data._embedded.events[0]);
-        console.log(resApi.data._embedded.events[0]);
         setImg(
           resApi.data._embedded.events[0].images.filter((im) => im.width > 1000)
         );
       });
   }, []);
+  // console.log(event.ticketing.healthCheck.summary);
 
   return (
     <div>
@@ -34,46 +34,62 @@ function Events(props) {
             <h1>{event.name}</h1>
           </div>
         </div>
-        <div class="container">
-        <button className="goback" onClick={() => history.goBack()}><img src={backarrow} /> Back to Results</button>
-        <br></br>
-        <br></br>
-        <div className="covid">
-          <p>Covid Restrictions</p>
-        </div>
-        {/* Display Price Range */}
-        {!event.priceRanges?.[0]?.min ? null : (
-          <h2>
-            Price Ranges: ${event.priceRanges?.[0]?.min} to $
-            {event.priceRanges?.[0]?.max}
-          </h2>
-        )}
+        <div className="container">
+          <button className="goback" onClick={() => history.goBack()}>
+            <img src={backarrow} /> Back to Results
+          </button>
+          <br></br>
+          <br></br>
 
-        {/* Display event promoter */}
-        {!event.promoter?.description ? null : (
-          <h3>{event.promoter?.description}</h3>
-        )}
+          {/* Display covid message */}
+          {!event.ticketing?.healthCheck?.summary ? (
+            <div className="covid">
+              <p>Covid Restrictions</p>
+            </div>
+          ) : (
+            <div className="covid">
+              <h3>{event.ticketing?.healthCheck?.summary}</h3>
+              <p>{event.ticketing?.healthCheck?.description}</p>
+            </div>
+          )}
+          {/* Display Price Range */}
+          {!event.priceRanges?.[0]?.min ? null : (
+            <h2>
+              Price Ranges: ${event.priceRanges?.[0]?.min} to $
+              {event.priceRanges?.[0]?.max}
+            </h2>
+          )}
+          {/* Display event promoter */}
+          {!event.promoter?.description ? null : (
+            <h3>{event.promoter?.description}</h3>
+          )}
+          {/* Display Event Date */}
+          {event.dates?.start?.localDate ? null : (
+            <h3>Date: {event.dates?.start?.localDate}</h3>
+          )}
+          {/* Display Event Time */}
+          {!event.dates?.start?.localTime ? null : (
+            <h3>Event starts at: {event.dates?.start?.localTime}</h3>
+          )}
 
-        {/* Display Event Date */}
-        {event.dates?.start?.localDate ? null : (
-          <h3>Date: {event.dates?.start?.localDate}</h3>
-        )}
+          {!event._embedded?.venues?.[0]?.name ? null : (
+            <div>
+              <h3>Place: {event._embedded?.venues?.[0]?.name}</h3>
+              <img src={event._embedded?.venues?.[0]?.images?.[0]?.url}></img>
+              <h4>Address: {event._embedded?.venues?.[0]?.address?.line1}</h4>
+            </div>
+          )}
 
-        {/* Display Event Time */}
-        {!event.dates?.start?.localTime ? null : (
-          <h3>Event starts at: {event.dates?.start?.localTime}</h3>
-        )}
-        {!seatMap ? (
-          <button onClick={() => setSeatMap(!seatMap)}>See Seatmap</button>
-        ) : null}
-
-        {seatMap ? (
-          <div>
-            <button onClick={() => setSeatMap(!seatMap)}>Hide Seatmap</button>
-            <br />
-            <img src={event.seatmap?.staticUrl} width="500" />
-          </div>
-        ) : null}
+          {!seatMap ? (
+            <button onClick={() => setSeatMap(!seatMap)}>See Seatmap</button>
+          ) : null}
+          {seatMap ? (
+            <div>
+              <button onClick={() => setSeatMap(!seatMap)}>Hide Seatmap</button>
+              <br />
+              <img src={event.seatmap?.staticUrl} width="500" />
+            </div>
+          ) : null}
         </div>
       </div>
     </div>
