@@ -147,3 +147,47 @@ header h1 {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.information {
+  display: flex;
+  flex-direction: row;
+}
+
+.information_left {
+  width: 40%;
+}
+
+.information_right {
+  width: 60%;
+  line-height: 2em;
+}
+
+.dateandtime {
+  background-color: #e3e3e3;
+  padding: 20px;
+  width: 80%;
+}
+
+.price {
+  background-color: #277292;
+  padding: 20px;
+  width: 80%;
+  color: #fff;
+}
+
+.ticketmaster {
+  background-color: #ff7785;
+  padding: 20px;
+  width: 80%;
+  color: #fff;
+}
+
+.seatmapbutton {
+  background: #ffffff;
+  border: 3px solid #ff7684;
+  box-sizing: border-box;
+  border-radius: 7px;
+  padding: 10px;
+  font-size: 1em;
+  color: #000;
+}

@@ -8,7 +8,6 @@ function Home(props) {
 
   const history = useHistory();
   const handleSubmit = (e) => {
-    console.log("button");
     e.preventDefault();
     let eventKeyWord = e.target[0].value;
     let eventCity = e.target[1].value;

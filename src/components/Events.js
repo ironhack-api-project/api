@@ -23,7 +23,7 @@ function Events(props) {
         );
       });
   }, []);
-  // console.log(event.ticketing.healthCheck.summary);
+  console.log(event.promoter?.description);
 
   return (
     <div>
@@ -34,7 +34,7 @@ function Events(props) {
             <h1>{event.name}</h1>
           </div>
         </div>
-        <div className="container">
+        <div class="container">
           <button className="goback" onClick={() => history.goBack()}>
             <img src={backarrow} /> Back to Results
           </button>
@@ -52,44 +52,82 @@ function Events(props) {
               <p>{event.ticketing?.healthCheck?.description}</p>
             </div>
           )}
-          {/* Display Price Range */}
-          {!event.priceRanges?.[0]?.min ? null : (
-            <h2>
-              Price Ranges: ${event.priceRanges?.[0]?.min} to $
-              {event.priceRanges?.[0]?.max}
-            </h2>
-          )}
-          {/* Display event promoter */}
-          {!event.promoter?.description ? null : (
-            <h3>{event.promoter?.description}</h3>
-          )}
-          {/* Display Event Date */}
-          {event.dates?.start?.localDate ? null : (
-            <h3>Date: {event.dates?.start?.localDate}</h3>
-          )}
-          {/* Display Event Time */}
-          {!event.dates?.start?.localTime ? null : (
-            <h3>Event starts at: {event.dates?.start?.localTime}</h3>
-          )}
+          <br></br>
+          <br></br>
+          <div className="information">
+            <div className="information_left">
+              <div className="dateandtime">
+                {/* Display Event Date */}
+                {!event.dates?.start?.localDate ? null : (
+                  <h3>Date: {event.dates?.start?.localDate}</h3>
+                )}
 
-          {!event._embedded?.venues?.[0]?.name ? null : (
-            <div>
-              <h3>Place: {event._embedded?.venues?.[0]?.name}</h3>
-              <img src={event._embedded?.venues?.[0]?.images?.[0]?.url}></img>
-              <h4>Address: {event._embedded?.venues?.[0]?.address?.line1}</h4>
+                {/* Display Event Time */}
+                {!event.dates?.start?.localTime ? null : (
+                  <h3>Event starts at: {event.dates?.start?.localTime}</h3>
+                )}
+              </div>
+              <br></br>
+              <div className="price">
+                {/* Display Price Range */}
+                {!event.priceRanges?.[0]?.min ? null : (
+                  <h4>
+                    Price Ranges: ${event.priceRanges?.[0]?.min} to $
+                    {event.priceRanges?.[0]?.max}
+                  </h4>
+                )}
+              </div>
+              <br></br>
+              <div className="ticketmaster">Ticketmaster</div>
             </div>
-          )}
-
-          {!seatMap ? (
-            <button onClick={() => setSeatMap(!seatMap)}>See Seatmap</button>
-          ) : null}
-          {seatMap ? (
-            <div>
-              <button onClick={() => setSeatMap(!seatMap)}>Hide Seatmap</button>
-              <br />
-              <img src={event.seatmap?.staticUrl} width="500" />
+            <div className="information_right">
+              {/* Display event promoter */}
+              {!event.promoter?.description ? null : (
+                <h3>{event.promoter?.description}</h3>
+              )}
+              <br></br>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ridiculus
+              aliquam velit sit morbi lorem tempus. Pellentesque ornare ultrices
+              massa fermentum. Pharetra consectetur ac vel hendrerit eu aliquet
+              metus. Fermentum sit lectus pretium vitae scelerisque vitae, vitae
+              lorem fringilla. Enim elementum enim aliquam in eu. Risus sit sed
+              accumsan neque elit adipiscing sem.<br></br>
+              <br></br>
+              {/* display venue information */}
+              {!event._embedded?.venues?.[0]?.name ? null : (
+                <div>
+                  <h3>Place: {event._embedded?.venues?.[0]?.name}</h3>
+                  <img
+                    src={event._embedded?.venues?.[0]?.images?.[0]?.url}
+                  ></img>
+                  <h4>
+                    Address: {event._embedded?.venues?.[0]?.address?.line1}
+                  </h4>
+                </div>
+              )}
+              {/* Display seat map */}
+              {!seatMap ? (
+                <button
+                  className="seatmapbutton"
+                  onClick={() => setSeatMap(!seatMap)}
+                >
+                  See Seatmap
+                </button>
+              ) : null}
+              {seatMap ? (
+                <div>
+                  <button
+                    className="seatmapbutton"
+                    onClick={() => setSeatMap(!seatMap)}
+                  >
+                    Hide Seatmap
+                  </button>
+                  <br />
+                  <img src={event.seatmap?.staticUrl} width="500" />
+                </div>
+              ) : null}
             </div>
-          ) : null}
+          </div>
         </div>
       </div>
     </div>
