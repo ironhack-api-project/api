@@ -23,7 +23,7 @@ function Events(props) {
         );
       });
   }, []);
-  console.log(event.promoter?.description);
+  console.log(event.url);
 
   return (
     <div>
