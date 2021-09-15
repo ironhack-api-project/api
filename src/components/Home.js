@@ -37,7 +37,12 @@ function Home(props) {
           });
           return (
             <div key={uniqueEvent.id}>
-              <Link to={`/events/${uniqueEvent.id}`}>
+              <Link
+                to={{
+                  pathname: `/events/${uniqueEvent.id}`,
+                  myCustomProps: uniqueEvent,
+                }}
+              >
                 <img src={img[0].url} width="500" />
                 <div>
                   <h2>{uniqueEvent.name}</h2>
