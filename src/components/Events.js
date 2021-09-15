@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import backarrow from '../backarrow.png';
 
 function Events(props) {
   let [event, setEvent] = useState({});
@@ -32,8 +33,9 @@ function Events(props) {
           <div class="eventtitle">
             <h1>{event.name}</h1>
           </div>
-          <div onClick={() => history.goBack()}>Back to Results</div>
         </div>
+        <div class="container">
+        <button className="goback" onClick={() => history.goBack()}><img src={backarrow} /> Back to Results</button>
         {/* Display Price Range */}
         {!event.priceRanges?.[0]?.min ? null : (
           <h2>
@@ -67,6 +69,7 @@ function Events(props) {
             <img src={event.seatmap?.staticUrl} width="500" />
           </div>
         ) : null}
+        </div>
       </div>
     </div>
   );
