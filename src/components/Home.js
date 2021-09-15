@@ -31,6 +31,7 @@ function Home(props) {
     return (
       <div className="events">
         {events.map((uniqueEvent) => {
+         
           let img = [...uniqueEvent.images].filter((im) => im.width > 1000);
           let city = [...uniqueEvent._embedded.venues].map((venue) => {
             return venue.city;
