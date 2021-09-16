@@ -126,7 +126,10 @@ function Events(props) {
               ) : null}
 
               {/* Google Maps */}
-              
+              <div id="#googleMap">
+                  
+
+              </div>
 
             </div>
           </div>
