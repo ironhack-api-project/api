@@ -126,15 +126,7 @@ function Events(props) {
               ) : null}
 
               {/* Google Maps */}
-              {/* <Map google={this.props.google} zoom={14}>
- 
- <Marker onClick={this.onMarkerClick}
-         name={'Current location'} />
-
- <InfoWindow onClose={this.onInfoWindowClose}>
-   
- </InfoWindow>
-</Map> */}
+              
 
             </div>
           </div>
@@ -144,8 +136,4 @@ function Events(props) {
   );
 }
 
-
-
-export default GoogleApiWrapper({
-  apiKey: ("AIzaSyDpNWO4_ipZqYPNlP4BbQqbXYui2KCUhrg")
-})(Events)
+export default Events;
