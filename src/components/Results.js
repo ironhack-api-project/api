@@ -12,11 +12,18 @@ function Results(props) {
   useEffect(() => {
     const params = new URLSearchParams(props.location.search);
     const keyword = params.get("keyword"); // bar
-
     const city = params.get("city"); // bar
+    let date = params.get("date");
+
+    if (date.length !== 0) {
+      date = date + "T00:00:00Z";
+    }
+
+    //startDateTime=2021-11-06T00:00:00Z
+
     axios
       .get(
-        `https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&keyword=${keyword}&city=${city}&sort=relevance,desc&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z`
+        `https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&keyword=${keyword}&city=${city}&startDateTime=${date}&sort=relevance,desc&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z`
       )
       .then((resApi) => {
         setEvents(resApi?.data?._embedded?.events);

@@ -27,8 +27,11 @@ function Home(props) {
     let eventKeyWord = e.target[0].value;
     let eventCity = e.target[1].value;
     let eventDate = e.target[2].value;
+    console.log(eventDate);
 
-    history.push(`/results?keyword=${eventKeyWord}&city=${eventCity}`);
+    history.push(
+      `/results?keyword=${eventKeyWord}&city=${eventCity}&date=${eventDate}`
+    );
   };
 
   useEffect(() => {
@@ -50,7 +53,6 @@ function Home(props) {
     if (events === undefined) {
       return <div>not found</div>;
     } else {
-      console.log(events);
       return (
         <div className="events">
           <h1>Suggestions near you</h1>
