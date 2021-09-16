@@ -93,13 +93,6 @@ function Events(props) {
                 <h3>{event.promoter?.description}</h3>
               )}
               <br></br>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ridiculus
-              aliquam velit sit morbi lorem tempus. Pellentesque ornare ultrices
-              massa fermentum. Pharetra consectetur ac vel hendrerit eu aliquet
-              metus. Fermentum sit lectus pretium vitae scelerisque vitae, vitae
-              lorem fringilla. Enim elementum enim aliquam in eu. Risus sit sed
-              accumsan neque elit adipiscing sem.<br></br>
-              <br></br>
               {/* display venue information */}
               {!event._embedded?.venues?.[0]?.name ? null : (
                 <div>
