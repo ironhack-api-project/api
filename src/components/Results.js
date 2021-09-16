@@ -17,7 +17,7 @@ function Results(props) {
     console.log("hello!");
     axios
       .get(
-        `https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&keyword=${keyword}&city=${city}&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z`
+        `https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&keyword=${keyword}&city=${city}&sort=date,asc&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z`
       )
       .then((resApi) => {
         setEvents(resApi?.data?._embedded?.events);

@@ -59,10 +59,8 @@ function Events(props) {
           <div className="information">
             <div className="information_left">
               <div className="dateandtime">
-                <h3>
-                    Address: {event._embedded?.venues?.[0]?.address?.line1}
-                  </h3>
-                  <br></br>
+                <h3>Address: {event._embedded?.venues?.[0]?.address?.line1}</h3>
+                <br></br>
                 {/* Display Event Date */}
                 {!event.dates?.start?.localDate ? null : (
                   <h3>Date: {event.dates?.start?.localDate}</h3>
@@ -78,13 +76,16 @@ function Events(props) {
                 {/* Display Price Range */}
                 {!event.priceRanges?.[0]?.min ? null : (
                   <h4>
-                    <img src={price} /> Price Ranges: ${event.priceRanges?.[0]?.min} to $
+                    <img src={price} /> Price Ranges: $
+                    {event.priceRanges?.[0]?.min} to $
                     {event.priceRanges?.[0]?.max}
                   </h4>
                 )}
               </div>
               <br></br>
-              <div className="ticketmaster"><img src={ticketmaster} /> Ticketmaster</div>
+              <div className="ticketmaster">
+                <img src={ticketmaster} /> Ticketmaster
+              </div>
             </div>
             <div className="information_right">
               {/* Display event promoter */}
@@ -106,7 +107,6 @@ function Events(props) {
                   <img
                     src={event._embedded?.venues?.[0]?.images?.[0]?.url}
                   ></img>
-
                 </div>
               )}
               {/* Display seat map */}
