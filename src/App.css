@@ -5,7 +5,8 @@
   padding: 0;
 }
 
-body {
+body,
+html {
   font-family: "Roboto", sans-serif;
 }
 
@@ -34,6 +35,13 @@ header h1 {
 }
 
 /* Body */
+
+.notfound {
+  font-weight: 300;
+  text-align: center;
+  font-size: 2em;
+}
+
 .tagline {
   font-size: 3em;
   text-align: center;
