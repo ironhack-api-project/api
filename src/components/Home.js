@@ -7,6 +7,7 @@ function Home(props) {
   let [events, setEvents] = useState([]);
   let [latitude, setLatitude] = useState(0);
   let [longitude, setLongitude] = useState(0);
+  let [show, setShow] = useState(true);
 
   const getLocation = () => {
     if (navigator.geolocation) {
@@ -22,6 +23,7 @@ function Home(props) {
   const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
+    setShow(false);
     let eventKeyWord = e.target[0].value;
     let eventCity = e.target[1].value;
     let eventDate = e.target[2].value;
@@ -33,7 +35,11 @@ function Home(props) {
     getLocation();
     axios
       .get(
-        `https://app.ticketmaster.com/discovery/v2/suggest.json?&geoPoint=${latitude},${longitude}&sort=name,date,asc&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z`
+        `https://app.ticketmaster.com/discovery/v2/suggest.json?&geoPoint=${Number(
+          latitude.toFixed(6)
+        )},${Number(
+          longitude.toFixed(6)
+        )}&sort=name,date,asc&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z`
       )
       .then((resApi) => {
         setEvents(resApi?.data?._embedded?.events);
@@ -44,6 +50,7 @@ function Home(props) {
     if (events === undefined) {
       return <div>not found</div>;
     } else {
+      console.log(events);
       return (
         <div className="events">
           <h1>Suggestions near you</h1>
@@ -74,6 +81,8 @@ function Home(props) {
     }
   };
 
+  console.log(show);
+
   return (
     <div>
       <div className="tagline">Let us help you find plans...</div>
@@ -93,7 +102,7 @@ function Home(props) {
           </div>
         </form>
       </div>
-      <ShowSuggestions />
+      {show ? <ShowSuggestions /> : null}
     </div>
   );
 }
