@@ -120,7 +120,7 @@ function Events(props) {
                     Hide Seatmap
                   </button>
                   <br />
-                  <img src={event.seatmap?.staticUrl} width="500" />
+                  <img src={event.seatmap?.staticUrl} className="resultimage" />
                 </div>
               ) : null}
             </div>
