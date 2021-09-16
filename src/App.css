@@ -98,6 +98,11 @@ header h1 {
   justify-content: center;
 }
 
+.resultimage,
+.resultimage img {
+  width: 500px;
+}
+
 .events {
   width: 500px;
   display: flex;
@@ -188,6 +193,10 @@ header h1 {
   color: #fff;
 }
 
+.ticketmaster a {
+  color: #fff;
+}
+
 .seatmapbutton {
   background: #ffffff;
   border: 3px solid #ff7684;
@@ -196,4 +205,46 @@ header h1 {
   padding: 10px;
   font-size: 1em;
   color: #000;
+}
+
+/* Mobile Responsive CSS */
+@media only screen and (max-width: 600px) {
+  .tagline {
+    font-size: 2em;
+  }
+
+  .boxes input,
+  .boxes select,
+  .boxes textarea {
+    width: 100%;
+  }
+
+  .resultimage,
+  .resultimage img {
+    max-width: 300px;
+  }
+
+  .container {
+    margin: 0 auto;
+    width: 300px;
+  }
+
+  .events {
+    width: 300px;
+  }
+
+  .information {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .information_left {
+    width: 300px;
+    padding-bottom: 25px;
+  }
+
+  .information_right {
+    width: 300px;
+    line-height: 2em;
+  }
 }

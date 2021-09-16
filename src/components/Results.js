@@ -36,14 +36,14 @@ function Results(props) {
               return venue.city;
             });
             return (
-              <div key={uniqueEvent.id}>
+              <div key={uniqueEvent.id} className="container">
                 <Link
                   to={{
                     pathname: `/events/${uniqueEvent.id}`,
                     myCustomProps: uniqueEvent,
                   }}
                 >
-                  <img src={img[0].url} width="500" />
+                  <img src={img[0].url} className="resultimage" />
                   <div>
                     <h2>{uniqueEvent.name}</h2>
                   </div>

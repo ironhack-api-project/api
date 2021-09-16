@@ -84,7 +84,7 @@ function Events(props) {
               </div>
               <br></br>
               <div className="ticketmaster">
-                <img src={ticketmaster} /> Ticketmaster
+                <img src={ticketmaster} /> <a href={event.url} target="_blank">Ticketmaster</a>
               </div>
             </div>
             <div className="information_right">
@@ -92,13 +92,6 @@ function Events(props) {
               {!event.promoter?.description ? null : (
                 <h3>{event.promoter?.description}</h3>
               )}
-              <br></br>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ridiculus
-              aliquam velit sit morbi lorem tempus. Pellentesque ornare ultrices
-              massa fermentum. Pharetra consectetur ac vel hendrerit eu aliquet
-              metus. Fermentum sit lectus pretium vitae scelerisque vitae, vitae
-              lorem fringilla. Enim elementum enim aliquam in eu. Risus sit sed
-              accumsan neque elit adipiscing sem.<br></br>
               <br></br>
               {/* display venue information */}
               {!event._embedded?.venues?.[0]?.name ? null : (
@@ -127,7 +120,7 @@ function Events(props) {
                     Hide Seatmap
                   </button>
                   <br />
-                  <img src={event.seatmap?.staticUrl} width="500" />
+                  <img src={event.seatmap?.staticUrl} className="resultimage" />
                 </div>
               ) : null}
             </div>
