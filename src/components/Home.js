@@ -77,7 +77,6 @@ function Home(props) {
                   to={{
                     pathname: `/events/${uniqueEvent.id}`,
                     myCustomProps: uniqueEvent,
-                    lat: latitude,
                   }}
                 >
                   <img src={img.url} className="resultimage" />
