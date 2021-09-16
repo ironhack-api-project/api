@@ -57,6 +57,12 @@ header h1 {
   color: #000;
 }
 
+.boxes input:hover,
+.boxes select:hover,
+.boxes textarea:hover {
+  border: 3px solid #da626e;
+}
+
 .boxes input[type="date"] {
   font-family: "Roboto", sans-serif;
 }
