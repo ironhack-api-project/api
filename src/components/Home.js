@@ -7,7 +7,7 @@ function Home(props) {
   let [events, setEvents] = useState([]);
   let [latitude, setLatitude] = useState(0);
   let [longitude, setLongitude] = useState(0);
-  let [show, setShow] = useState(true);
+  let [show, setShow] = useState(props.show);
 
   const getLocation = () => {
     if (navigator.geolocation) {
@@ -38,7 +38,7 @@ function Home(props) {
     getLocation();
     axios
       .get(
-        `https://app.ticketmaster.com/discovery/v2/suggest.json?&geoPoint=${Number(
+        `https://app.ticketmaster.com/discovery/v2/suggest.json?&countryCode=US&geoPoint=${Number(
           latitude.toFixed(6)
         )},${Number(
           longitude.toFixed(6)
@@ -82,8 +82,6 @@ function Home(props) {
       );
     }
   };
-
-  console.log(show);
 
   return (
     <div>
