@@ -50,8 +50,8 @@ function Events(props) {
             </div>
           ) : (
             <div className="covid">
-              <h3>{event.ticketing?.healthCheck?.summary}</h3>
-              <p>{event.ticketing?.healthCheck?.description}</p>
+              <p><h3>{event.ticketing?.healthCheck?.summary}</h3>
+              {event.ticketing?.healthCheck?.description}</p>
             </div>
           )}
           <br></br>
