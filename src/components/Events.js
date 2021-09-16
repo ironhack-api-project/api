@@ -5,6 +5,7 @@ import axios from "axios";
 import backarrow from "../backarrow.png";
 import price from "../price.png";
 import ticketmaster from "../ticketmaster.png";
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 function Events(props) {
   let [event, setEvent] = useState({});
@@ -123,6 +124,18 @@ function Events(props) {
                   <img src={event.seatmap?.staticUrl} className="resultimage" />
                 </div>
               ) : null}
+
+              {/* Google Maps */}
+              {/* <Map google={this.props.google} zoom={14}>
+ 
+ <Marker onClick={this.onMarkerClick}
+         name={'Current location'} />
+
+ <InfoWindow onClose={this.onInfoWindowClose}>
+   
+ </InfoWindow>
+</Map> */}
+
             </div>
           </div>
         </div>
@@ -131,4 +144,8 @@ function Events(props) {
   );
 }
 
-export default Events;
+
+
+export default GoogleApiWrapper({
+  apiKey: ("AIzaSyDpNWO4_ipZqYPNlP4BbQqbXYui2KCUhrg")
+})(Events)
