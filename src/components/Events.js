@@ -5,16 +5,13 @@ import axios from "axios";
 import backarrow from "../backarrow.png";
 import price from "../price.png";
 import ticketmaster from "../ticketmaster.png";
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import GoogleMaps from "simple-react-google-maps"
-
+import GoogleMaps from "simple-react-google-maps";
 
 function Events(props) {
   let [event, setEvent] = useState({});
   let [seatMap, setSeatMap] = useState(false);
   let [img, setImg] = useState([]);
   let history = useHistory();
-
 
   useEffect(() => {
     axios
@@ -133,16 +130,14 @@ function Events(props) {
 
               {/* Google Maps */}
               <div id="#googleMap">
-              <GoogleMaps
-  apiKey={"AIzaSyDpNWO4_ipZqYPNlP4BbQqbXYui2KCUhrg"}
-  style={{height: "400px", width: "100%"}}
-  zoom={6}
-  center={{lat: 37.4224764, lng: -112.0842499}}
-  markers={{lat: 37.4224764, lng: -112.0842499}} 
-/>
-
+                <GoogleMaps
+                  apiKey={"AIzaSyDpNWO4_ipZqYPNlP4BbQqbXYui2KCUhrg"}
+                  style={{ height: "400px", width: "100%" }}
+                  zoom={6}
+                  center={{ lat: 37.4224764, lng: -112.0842499 }}
+                  markers={{ lat: 37.4224764, lng: -112.0842499 }}
+                />
               </div>
-
             </div>
           </div>
         </div>
