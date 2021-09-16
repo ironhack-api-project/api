@@ -19,7 +19,7 @@ function Events(props) {
   useEffect(() => {
     axios
       .get(
-        `https://app.ticketmaster.com/discovery/v2/events.json?id=${props.match.params.eventId}&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z`
+        `https://iron-cors-anywhere.herokuapp.com/https://app.ticketmaster.com/discovery/v2/events.json?id=${props.match.params.eventId}&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z`
       )
       .then((resApi) => {
         setEvent(resApi.data._embedded.events[0]);
@@ -28,8 +28,6 @@ function Events(props) {
         );
       });
   }, []);
-  console.log(event.url);
-console.log(props)
 
   return (
     <div>
@@ -54,8 +52,10 @@ console.log(props)
             </div>
           ) : (
             <div className="covid">
-              <h3>{event.ticketing?.healthCheck?.summary}</h3>
-              <p>{event.ticketing?.healthCheck?.description}</p>
+              <p>
+                <h3>{event.ticketing?.healthCheck?.summary}</h3>
+                {event.ticketing?.healthCheck?.description}
+              </p>
             </div>
           )}
           <br></br>
@@ -88,7 +88,10 @@ console.log(props)
               </div>
               <br></br>
               <div className="ticketmaster">
-                <img src={ticketmaster} /> <a href={event.url} target="_blank">Ticketmaster</a>
+                <img src={ticketmaster} />{" "}
+                <a href={event.url} target="_blank">
+                  Ticketmaster
+                </a>
               </div>
             </div>
             <div className="information_right">

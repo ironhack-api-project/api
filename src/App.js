@@ -21,7 +21,11 @@ function App() {
       </header>
 
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route
+          exact
+          path="/"
+          component={(props) => <Home {...props} show={true} />}
+        />
         <Route exact path="/events/:eventId" component={Events} />
         <Route exact path="/results" component={Results} />
       </Switch>

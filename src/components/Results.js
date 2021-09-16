@@ -4,7 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Home from "./Home";
-import notfound from '../notfound.png'
+import notfound from "../notfound.png";
 
 function Results(props) {
   let { keyword, city } = useParams();
@@ -20,11 +20,9 @@ function Results(props) {
       date = date + "T00:00:00Z";
     }
 
-    //startDateTime=2021-11-06T00:00:00Z
-
     axios
       .get(
-        `https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&keyword=${keyword}&city=${city}&startDateTime=${date}&sort=relevance,desc&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z`
+        `https://iron-cors-anywhere.herokuapp.com/https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&keyword=${keyword}&city=${city}&startDateTime=${date}&sort=relevance,desc&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z`
       )
       .then((resApi) => {
         setEvents(resApi?.data?._embedded?.events);
@@ -33,13 +31,19 @@ function Results(props) {
 
   const ShowEvents = () => {
     if (events === undefined) {
-      return <div className="events">
-        <br></br>
-        <div className="notfound">We couldn't seem to find any events related to your search.</div><br></br>
-        <br></br>
-        <br></br>
-        <img src={notfound} className="resultimage"></img><br></br>
-        </div>;
+      return (
+        <div className="events">
+          <br></br>
+          <div className="notfound">
+            We couldn't seem to find any events related to your search.
+          </div>
+          <br></br>
+          <br></br>
+          <br></br>
+          <img src={notfound} className="resultimage"></img>
+          <br></br>
+        </div>
+      );
     } else {
       return (
         <div className="events">
@@ -81,7 +85,7 @@ function Results(props) {
 
   return (
     <div>
-      <Home />
+      <Home show={false} />
       <ShowEvents />
     </div>
   );
