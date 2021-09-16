@@ -84,7 +84,7 @@ function Events(props) {
               </div>
               <br></br>
               <div className="ticketmaster">
-                <img src={ticketmaster} /> Ticketmaster
+                <img src={ticketmaster} /> <a href={event.url} target="_blank">Ticketmaster</a>
               </div>
             </div>
             <div className="information_right">
