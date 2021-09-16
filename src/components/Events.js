@@ -10,7 +10,6 @@ function Events(props) {
   let [event, setEvent] = useState({});
   let [seatMap, setSeatMap] = useState(false);
   let [img, setImg] = useState([]);
-
   let history = useHistory();
 
   useEffect(() => {
@@ -25,7 +24,6 @@ function Events(props) {
         );
       });
   }, []);
-  console.log(event.url);
 
   return (
     <div>
