@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Home from "./Home";
+import notfound from '../notfound.png'
 
 function Results(props) {
   let { keyword, city } = useParams();
@@ -32,7 +33,13 @@ function Results(props) {
 
   const ShowEvents = () => {
     if (events === undefined) {
-      return <div>not found</div>;
+      return <div className="events">
+        <br></br>
+        <div className="notfound">We couldn't seem to find any events related to your search.</div><br></br>
+        <br></br>
+        <br></br>
+        <img src={notfound} className="resultimage"></img><br></br>
+        </div>;
     } else {
       return (
         <div className="events">
