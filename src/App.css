@@ -255,6 +255,12 @@ header h1 {
     width: 300px;
     line-height: 2em;
   }
+
+  .notfound {
+    font-weight: 300;
+    text-align: center;
+    font-size: 1.5em;
+  }
 }
 #googleMap{
   width:100%;
