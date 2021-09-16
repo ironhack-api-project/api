@@ -35,10 +35,19 @@ function Home(props) {
   };
 
   useEffect(() => {
-    getLocation();
+    let mounted = true;
+    // getLocation();
+    navigator.geolocation.getCurrentPosition((position) => {
+      if (mounted) {
+        // Add this
+        setLatitude(position.coords.latitude);
+        setLongitude(position.coords.longitude);
+      }
+    });
+
     axios
       .get(
-        `https://app.ticketmaster.com/discovery/v2/suggest.json?&countryCode=US&geoPoint=${Number(
+        `https://iron-cors-anywhere.herokuapp.com/https://app.ticketmaster.com/discovery/v2/suggest.json?&countryCode=US&geoPoint=${Number(
           latitude.toFixed(6)
         )},${Number(
           longitude.toFixed(6)
@@ -47,6 +56,9 @@ function Home(props) {
       .then((resApi) => {
         setEvents(resApi?.data?._embedded?.events);
       });
+    return () => {
+      mounted = false; // add this
+    };
   }, [latitude, longitude]);
 
   let ShowSuggestions = () => {
