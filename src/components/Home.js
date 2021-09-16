@@ -5,6 +5,19 @@ import { Link, useHistory } from "react-router-dom";
 
 function Home(props) {
   let [events, setEvents] = useState([]);
+  let [latitude, setLatitude] = useState(0);
+  let [longitude, setLongitude] = useState(0);
+
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    }
+  };
+
+  const showPosition = (position) => {
+    setLatitude(position?.coords?.latitude);
+    setLongitude(position?.coords?.longitude);
+  };
 
   const history = useHistory();
   const handleSubmit = (e) => {
@@ -13,20 +26,52 @@ function Home(props) {
     let eventCity = e.target[1].value;
     let eventDate = e.target[2].value;
 
-    // let linkApi =
-    //   "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&keyword=";
-
-    // let linkToAxios =
-    //   linkApi +
-    //   eventKeyWord +
-    //   "&city=" +
-    //   eventCity +
-    //   "&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z";
-
-    // axios.get(linkToAxios).then((resApi) => {
-    //   setEvents(resApi?.data?._embedded?.events);
-    // });
     history.push(`/results?keyword=${eventKeyWord}&city=${eventCity}`);
+  };
+
+  useEffect(() => {
+    getLocation();
+    axios
+      .get(
+        `https://app.ticketmaster.com/discovery/v2/suggest.json?&geoPoint=${latitude},${longitude}&sort=name,date,asc&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z`
+      )
+      .then((resApi) => {
+        setEvents(resApi?.data?._embedded?.events);
+      });
+  }, [latitude, longitude]);
+
+  let ShowSuggestions = () => {
+    if (events === undefined) {
+      return <div>not found</div>;
+    } else {
+      return (
+        <div>
+          <h1>Suggestions near you</h1>
+          {events?.map((uniqueEvent) => {
+            let img = uniqueEvent.images.find((im) => im.width > 1000);
+
+            return (
+              <div key={uniqueEvent.id} className="suggestions">
+                <Link
+                  to={{
+                    pathname: `/events/${uniqueEvent.id}`,
+                    myCustomProps: uniqueEvent,
+                  }}
+                >
+                  <img src={img.url} width="500" />
+                  <div>
+                    <h2>{uniqueEvent.name}</h2>
+                  </div>
+                  <div>
+                    <strong>Date</strong>: {uniqueEvent.dates.start.localDate}
+                  </div>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
   };
 
   return (
@@ -48,6 +93,7 @@ function Home(props) {
           </div>
         </form>
       </div>
+      <ShowSuggestions />
     </div>
   );
 }
