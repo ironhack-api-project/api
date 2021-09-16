@@ -43,7 +43,7 @@ function Results(props) {
                     myCustomProps: uniqueEvent,
                   }}
                 >
-                  <img src={img[0].url} width="500" />
+                  <img src={img[0].url} className="resultimage" />
                   <div>
                     <h2>{uniqueEvent.name}</h2>
                   </div>

@@ -98,6 +98,11 @@ header h1 {
   justify-content: center;
 }
 
+.resultimage,
+.resultimage img {
+  width: 500px;
+}
+
 .events {
   width: 500px;
   display: flex;
@@ -200,4 +205,22 @@ header h1 {
   padding: 10px;
   font-size: 1em;
   color: #000;
+}
+
+/* Mobile Responsive CSS */
+@media only screen and (max-width: 600px) {
+  .tagline {
+    font-size: 2em;
+  }
+
+  .boxes input,
+  .boxes select,
+  .boxes textarea {
+    width: 100%;
+  }
+
+  .resultimage,
+  .resultimage img {
+    max-width: 100%;
+  }
 }
