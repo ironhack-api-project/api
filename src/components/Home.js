@@ -45,7 +45,7 @@ function Home(props) {
       return <div>not found</div>;
     } else {
       return (
-        <div>
+        <div className="events">
           <h1>Suggestions near you</h1>
           {events?.map((uniqueEvent) => {
             let img = uniqueEvent.images.find((im) => im.width > 1000);
@@ -58,7 +58,7 @@ function Home(props) {
                     myCustomProps: uniqueEvent,
                   }}
                 >
-                  <img src={img.url} width="500" />
+                  <img src={img.url} className="resultimage" />
                   <div>
                     <h2>{uniqueEvent.name}</h2>
                   </div>
