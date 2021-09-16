@@ -221,6 +221,15 @@ header h1 {
 
   .resultimage,
   .resultimage img {
-    max-width: 100%;
+    max-width: 300px;
+  }
+
+  .container {
+    margin: 0;
+    width: 300px;
+  }
+
+  .events {
+    width: 300px;
   }
 }
