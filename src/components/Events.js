@@ -7,10 +7,12 @@ import price from "../price.png";
 import ticketmaster from "../ticketmaster.png";
 import GoogleMaps from "simple-react-google-maps";
 function Events(props) {
-  let [event, setEvent] = useState({});
-  let [seatMap, setSeatMap] = useState(false);
-  let [img, setImg] = useState([]);
-  let history = useHistory();
+  const [event, setEvent] = useState({});
+  const [seatMap, setSeatMap] = useState(false);
+  const [img, setImg] = useState([]);
+  const history = useHistory();
+  const [lat, setLat] = useState(undefined);
+  const [lng,setLng] = useState(undefined);
   useEffect(() => {
     axios
       .get(
@@ -21,10 +23,15 @@ function Events(props) {
         setImg(
           resApi.data._embedded.events[0].images.find((im) => im.width > 1000)
         );
+        setLat(
+          Number(resApi.data._embedded?.events[0]._embedded?.venues?.[0]?.location?.latitude)
+        )
+        setLng(
+          Number(resApi.data._embedded?.events[0]._embedded?.venues?.[0]?.location?.longitude)
+        )
+        console.log(resApi.data._embedded?.events[0]._embedded?.venues?.[0]?.location?.longitude)
       });
   }, []);
-  let lat = Number(event._embedded?.venues?.[0]?.location?.latitude);
-  let lng = Number(event._embedded?.venues?.[0]?.location?.longitude);
   
   return (
     <div>
@@ -118,15 +125,20 @@ function Events(props) {
           </div>
         </div>
       </div>
+      {/* {console.log(lat,lng)} */}
               <div className="#googleMap">
-                <GoogleMaps
-                  apiKey={"AIzaSyDpNWO4_ipZqYPNlP4BbQqbXYui2KCUhrg"}
-                  style={{ height: "400px", width: "400px" }}
-                  zoom={15}
-                  center={{ lat: lat, lng: lng }}
-                  markers={{ lat: lat, lng: lng }}
-                />
-              </div>
+            {lat!==undefined && lng!==undefined ?
+    (<GoogleMaps
+      apiKey={"AIzaSyDpNWO4_ipZqYPNlP4BbQqbXYui2KCUhrg"}
+      style={{ height: "400px", width: "400px" , postion:"absolute"}}
+      zoom={15}
+      center={{ lat: lat , lng: lng }}
+      markers={{ lat: lat  , lng: lng }}
+    />
+      
+  ) : "loading"        
+            }
+   </div>
     </div>
   );
 }
