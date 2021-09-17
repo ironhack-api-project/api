@@ -120,6 +120,9 @@ header h1 {
 
 .eventsimage {
   position: relative;
+  text-align: center;
+  max-width: 1024px;
+  margin: 0 auto;
 }
 
 .eventtitle {
@@ -129,7 +132,6 @@ header h1 {
   color: #fff;
   font-size: 1.5vw;
   text-align: center;
-  /* text-shadow: 2px 2px black; */
   background-color: #277292;
   padding: 20px;
 }
@@ -146,7 +148,7 @@ header h1 {
 
 .container {
   margin: 0 auto;
-  width: 80%;
+  width: 1024px;
   padding-top: 50px;
 }
 
@@ -172,9 +174,9 @@ header h1 {
   flex-direction: row;
 }
 
-/* .information_left {
+.information_left {
   width: 40%;
-} */
+}
 
 .information_right {
   width: 60%;
@@ -217,6 +219,14 @@ header h1 {
 
 /* Mobile Responsive CSS */
 @media only screen and (max-width: 600px) {
+  .eventsimage,
+  .eventsimage img {
+    position: relative;
+    text-align: center;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
   .tagline {
     font-size: 2em;
   }
