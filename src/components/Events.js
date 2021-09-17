@@ -6,13 +6,11 @@ import backarrow from "../backarrow.png";
 import price from "../price.png";
 import ticketmaster from "../ticketmaster.png";
 import GoogleMaps from "simple-react-google-maps";
-
 function Events(props) {
   let [event, setEvent] = useState({});
   let [seatMap, setSeatMap] = useState(false);
   let [img, setImg] = useState([]);
   let history = useHistory();
-
   useEffect(() => {
     axios
       .get(
@@ -25,10 +23,8 @@ function Events(props) {
         );
       });
   }, []);
-
   let lat = Number(event._embedded?.venues?.[0]?.location?.latitude);
   let lng = Number(event._embedded?.venues?.[0]?.location?.longitude);
-
   return (
     <div>
       <div>
@@ -44,7 +40,6 @@ function Events(props) {
           </button>
           <br></br>
           <br></br>
-
           {/* Display covid message */}
           {!event.ticketing?.healthCheck?.summary ? (
             <div className="covid">
@@ -106,7 +101,7 @@ function Events(props) {
                   <h3>Place: {event._embedded?.venues?.[0]?.name}</h3>
                   <img
                     src={event._embedded?.venues?.[0]?.images?.[0]?.url}
-                    className="resultimage"></img>
+                  ></img>
                 </div>
               )}
               {/* Display seat map */}
@@ -130,13 +125,12 @@ function Events(props) {
                   <img src={event.seatmap?.staticUrl} className="resultimage" />
                 </div>
               ) : null}
-
               {/* Google Maps */}
               <div id="#googleMap">
                 <GoogleMaps
                   apiKey={"AIzaSyDpNWO4_ipZqYPNlP4BbQqbXYui2KCUhrg"}
                   style={{ height: "400px", width: "400px" }}
-                  zoom={6}
+                  zoom={15}
                   center={{ lat: lat, lng: lng }}
                   markers={{ lat: lat, lng: lng }}
                 />
@@ -148,5 +142,4 @@ function Events(props) {
     </div>
   );
 }
-
 export default Events;

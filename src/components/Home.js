@@ -2,24 +2,20 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
-
 function Home(props) {
   let [events, setEvents] = useState([]);
   let [latitude, setLatitude] = useState(0);
   let [longitude, setLongitude] = useState(0);
   let [show, setShow] = useState(props.show);
-
   const getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
     }
   };
-
   const showPosition = (position) => {
     setLatitude(position?.coords?.latitude);
     setLongitude(position?.coords?.longitude);
   };
-
   const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,10 +23,10 @@ function Home(props) {
     let eventKeyWord = e.target[0].value;
     let eventCity = e.target[1].value;
     let eventDate = e.target[2].value;
-
-    history.push(`/results?keyword=${eventKeyWord}&city=${eventCity}`);
+    history.push(
+      `/results?keyword=${eventKeyWord}&city=${eventCity}&date=${eventDate}`
+    );
   };
-
   useEffect(() => {
     let mounted = true;
     // getLocation();
@@ -41,7 +37,6 @@ function Home(props) {
         setLongitude(position.coords.longitude);
       }
     });
-
     axios
       .get(
         `https://iron-cors-anywhere.herokuapp.com/https://app.ticketmaster.com/discovery/v2/suggest.json?&countryCode=US&geoPoint=${Number(
@@ -57,7 +52,6 @@ function Home(props) {
       mounted = false; // add this
     };
   }, [latitude, longitude]);
-
   let ShowSuggestions = () => {
     if (events === undefined) {
       return <div>not found</div>;
@@ -67,7 +61,6 @@ function Home(props) {
           <h1>Suggestions near you</h1>
           {events?.map((uniqueEvent) => {
             let img = uniqueEvent.images.find((im) => im.width > 1000);
-
             return (
               <div key={uniqueEvent.id} className="suggestions">
                 <Link
@@ -91,7 +84,6 @@ function Home(props) {
       );
     }
   };
-
   return (
     <div>
       <div className="tagline">Let us help you find plans...</div>
@@ -115,5 +107,4 @@ function Home(props) {
     </div>
   );
 }
-
 export default Home;

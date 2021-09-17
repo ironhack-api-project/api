@@ -5,9 +5,7 @@ import Home from "./components/Home";
 import Events from "./components/Events";
 import ticket from "./ticket.png";
 import Results from "./components/Results";
-
 //Ticketmaster API Key = biW1fGE1aeVKqhiGWAdGttCRSItyVN2z
-
 function App() {
   return (
     <div className="App">
@@ -19,7 +17,6 @@ function App() {
         </Link>
         <h1>getBooked</h1>
       </header>
-
       <Switch>
         <Route
           exact
@@ -32,5 +29,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
