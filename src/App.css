@@ -172,9 +172,9 @@ header h1 {
   flex-direction: row;
 }
 
-.information_left {
+/* .information_left {
   width: 40%;
-}
+} */
 
 .information_right {
   width: 60%;

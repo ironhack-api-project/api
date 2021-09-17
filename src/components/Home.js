@@ -7,6 +7,7 @@ function Home(props) {
   let [events, setEvents] = useState([]);
   let [latitude, setLatitude] = useState(0);
   let [longitude, setLongitude] = useState(0);
+  let [show, setShow] = useState(props.show);
 
   const getLocation = () => {
     if (navigator.geolocation) {
@@ -22,6 +23,7 @@ function Home(props) {
   const history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
+    setShow(false);
     let eventKeyWord = e.target[0].value;
     let eventCity = e.target[1].value;
     let eventDate = e.target[2].value;
@@ -30,14 +32,30 @@ function Home(props) {
   };
 
   useEffect(() => {
-    getLocation();
+    let mounted = true;
+    // getLocation();
+    navigator.geolocation.getCurrentPosition((position) => {
+      if (mounted) {
+        // Add this
+        setLatitude(position.coords.latitude);
+        setLongitude(position.coords.longitude);
+      }
+    });
+
     axios
       .get(
-        `https://app.ticketmaster.com/discovery/v2/suggest.json?&geoPoint=${latitude},${longitude}&sort=name,date,asc&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z`
+        `https://iron-cors-anywhere.herokuapp.com/https://app.ticketmaster.com/discovery/v2/suggest.json?&countryCode=US&geoPoint=${Number(
+          latitude.toFixed(6)
+        )},${Number(
+          longitude.toFixed(6)
+        )}&sort=name,date,asc&apikey=biW1fGE1aeVKqhiGWAdGttCRSItyVN2z`
       )
       .then((resApi) => {
         setEvents(resApi?.data?._embedded?.events);
       });
+    return () => {
+      mounted = false; // add this
+    };
   }, [latitude, longitude]);
 
   let ShowSuggestions = () => {
@@ -93,7 +111,7 @@ function Home(props) {
           </div>
         </form>
       </div>
-      <ShowSuggestions />
+      {show ? <ShowSuggestions /> : null}
     </div>
   );
 }
