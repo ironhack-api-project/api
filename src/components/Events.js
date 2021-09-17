@@ -118,7 +118,7 @@ function Events(props) {
           </div>
         </div>
       </div>
-              <div id="#googleMap">
+              <div className="#googleMap">
                 <GoogleMaps
                   apiKey={"AIzaSyDpNWO4_ipZqYPNlP4BbQqbXYui2KCUhrg"}
                   style={{ height: "400px", width: "400px" }}
