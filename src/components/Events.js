@@ -123,14 +123,12 @@ function Events(props) {
               {/* Google Maps */}
             </div>
           </div>
-        </div>
-      </div>
       {/* {console.log(lat,lng)} */}
               <div className="#googleMap">
             {lat!==undefined && lng!==undefined ?
     (<GoogleMaps
       apiKey={"AIzaSyDpNWO4_ipZqYPNlP4BbQqbXYui2KCUhrg"}
-      style={{ height: "400px", width: "400px" , postion:"absolute"}}
+      style={{ height: "400px", width: "1024px" , position:"absolute"}}
       zoom={15}
       center={{ lat: lat , lng: lng }}
       markers={{ lat: lat  , lng: lng }}
@@ -138,6 +136,8 @@ function Events(props) {
       
   ) : "loading"        
             }
+        </div>
+      </div>
    </div>
     </div>
   );
