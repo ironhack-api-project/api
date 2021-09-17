@@ -29,7 +29,7 @@ function Events(props) {
   let lat = Number(event._embedded?.venues?.[0]?.location?.latitude);
   let lng = Number(event._embedded?.venues?.[0]?.location?.longitude);
 
-  console.log(lat);
+
 
   return (
     <div>
@@ -132,13 +132,13 @@ function Events(props) {
                   <img src={event.seatmap?.staticUrl} className="resultimage" />
                 </div>
               ) : null}
-
+                    
               {/* Google Maps */}
               <div id="#googleMap">
                 <GoogleMaps
                   apiKey={"AIzaSyDpNWO4_ipZqYPNlP4BbQqbXYui2KCUhrg"}
                   style={{ height: "400px", width: "400px" }}
-                  zoom={6}
+                  zoom={15}
                   center={{ lat: lat, lng: lng }}
                   markers={{ lat: lat, lng: lng }}
                 />
