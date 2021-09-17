@@ -10,7 +10,7 @@ function Comment() {
 
   useEffect(() => {
     axios.get("https://ironrest.herokuapp.com/leave").then((res) => {
-      setInfo(res.data);
+      setInfo(res.data.reverse());
     });
   }, []);
 
@@ -29,7 +29,7 @@ function Comment() {
         name: `${name}`,
       })
       .then((res) => {
-        setInfo([...info, ...res.data.ops]);
+        setInfo([...res.data.ops, ...info]);
       });
     e.target[0].value = "";
     e.target[1].value = "";
