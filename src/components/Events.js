@@ -29,7 +29,7 @@ function Events(props) {
     <div>
       <div>
         <div className="eventsimage">
-          <img src={img?.url} width="100%" />
+          <img src={img?.url} />
           <div class="eventtitle">
             <h1>{event.name}</h1>
           </div>
