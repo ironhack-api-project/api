@@ -2,6 +2,8 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
+import Comment from "./Comment";
+
 function Home(props) {
   let [events, setEvents] = useState([]);
   let [latitude, setLatitude] = useState(0);
@@ -104,6 +106,7 @@ function Home(props) {
         </form>
       </div>
       {show ? <ShowSuggestions /> : null}
+      <Comment />
     </div>
   );
 }
