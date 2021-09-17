@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import commentimg from '../comment.png';
+import commentimg from "../comment.png";
 
 //https://ironrest.herokuapp.com/
 
@@ -14,6 +14,8 @@ function Comment() {
       setInfo(res.data.reverse());
     });
   }, []);
+
+  console.log("nothing");
 
   const saveComment = (e) => {
     e.preventDefault();
@@ -41,7 +43,9 @@ function Comment() {
     <div className="commentscontainer">
       <h1>Comments </h1>
       <br></br>
-      <center><img src={commentimg} /></center>
+      <center>
+        <img src={commentimg} />
+      </center>
       <br></br>
       <button onClick={() => setComment(!comment)}>Leave us a comment!</button>
       <br></br>
