@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Home from "./Home";
+import Comment from "./Comment";
 import notfound from "../notfound.png";
 function Results(props) {
   let { keyword, city } = useParams();
@@ -80,6 +81,7 @@ function Results(props) {
     <div>
       <Home show={false} />
       <ShowEvents />
+      <Comment />
     </div>
   );
 }

@@ -105,8 +105,12 @@ function Home(props) {
           </div>
         </form>
       </div>
-      {show ? <ShowSuggestions /> : null}
-      <Comment />
+      {show ? (
+        <div>
+          <ShowSuggestions />
+          <Comment />
+        </div>
+      ) : null}
     </div>
   );
 }
