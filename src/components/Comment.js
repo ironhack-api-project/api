@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import commentimg from '../comment.png';
 
 //https://ironrest.herokuapp.com/
 
@@ -10,7 +11,7 @@ function Comment() {
 
   useEffect(() => {
     axios.get("https://ironrest.herokuapp.com/leave").then((res) => {
-      setInfo(res.data);
+      setInfo(res.data.reverse());
     });
   }, []);
 
@@ -27,28 +28,35 @@ function Comment() {
       .post("https://ironrest.herokuapp.com/leave", {
         comment: `${comment}`,
         name: `${name}`,
+        date: Date().substr(0, 21),
       })
       .then((res) => {
-        setInfo([...info, ...res.data.ops]);
+        setInfo([...res.data.ops, ...info]);
       });
     e.target[0].value = "";
     e.target[1].value = "";
   };
 
   return (
-    <div className="App">
+    <div className="commentscontainer">
       <h1>Comments </h1>
+      <br></br>
+      <center><img src={commentimg} /></center>
+      <br></br>
       <button onClick={() => setComment(!comment)}>Leave us a comment!</button>
+      <br></br>
+      <br></br>
       {comment ? (
         <form onSubmit={saveComment}>
           <div>
             <input type="text" placeholder="Your name" />
           </div>
-          <div className="input">
-            <textarea rows="4" cols="50" placeholder="Comment" />
+          <br></br>
+          <div>
+            <textarea placeholder="Comment" />
           </div>
           <div>
-            <button type="submit">Send</button>
+            <button type="submit">Send</button> &nbsp;
             <button type="reset">Reset</button>
           </div>
         </form>
@@ -69,8 +77,13 @@ function Comment() {
             return (
               <div>
                 <div className="comments">
-                  <h4>👤{dat?.name}:</h4>
+                  <h4>
+                    👤 {dat?.name} <span>{dat?.date}</span>
+                  </h4>
                   <p>{dat?.comment}</p>
+                  <br></br>
+                  <hr></hr>
+                  <br></br>
                 </div>
               </div>
             );
