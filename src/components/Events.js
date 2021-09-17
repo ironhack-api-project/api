@@ -6,13 +6,11 @@ import backarrow from "../backarrow.png";
 import price from "../price.png";
 import ticketmaster from "../ticketmaster.png";
 import GoogleMaps from "simple-react-google-maps";
-
 function Events(props) {
   let [event, setEvent] = useState({});
   let [seatMap, setSeatMap] = useState(false);
   let [img, setImg] = useState([]);
   let history = useHistory();
-
   useEffect(() => {
     axios
       .get(
@@ -21,21 +19,18 @@ function Events(props) {
       .then((resApi) => {
         setEvent(resApi.data._embedded.events[0]);
         setImg(
-          resApi.data._embedded.events[0].images.filter((im) => im.width > 1000)
+          resApi.data._embedded.events[0].images.find((im) => im.width > 1000)
         );
       });
   }, []);
-
   let lat = Number(event._embedded?.venues?.[0]?.location?.latitude);
   let lng = Number(event._embedded?.venues?.[0]?.location?.longitude);
-
-
-
+  
   return (
     <div>
       <div>
         <div className="eventsimage">
-          <img src={img[0]?.url} width="100%" />
+          <img src={img?.url} width="100%" />
           <div class="eventtitle">
             <h1>{event.name}</h1>
           </div>
@@ -44,22 +39,6 @@ function Events(props) {
           <button className="goback" onClick={() => history.goBack()}>
             <img src={backarrow} /> Back to Results
           </button>
-          <br></br>
-          <br></br>
-
-          {/* Display covid message */}
-          {!event.ticketing?.healthCheck?.summary ? (
-            <div className="covid">
-              <p>Covid Restrictions</p>
-            </div>
-          ) : (
-            <div className="covid">
-              <p>
-                <h3>{event.ticketing?.healthCheck?.summary}</h3>
-                {event.ticketing?.healthCheck?.description}
-              </p>
-            </div>
-          )}
           <br></br>
           <br></br>
           <div className="information">
@@ -80,7 +59,7 @@ function Events(props) {
               <br></br>
               <div className="price">
                 {/* Display Price Range */}
-                {!event.priceRanges?.[0]?.min ? null : (
+                {!event.priceRanges?.[0]?.min ? (<p><img src={price} /> Price on Ticketmaster</p>) : (
                   <h4>
                     <img src={price} /> Price Ranges: $
                     {event.priceRanges?.[0]?.min} to $
@@ -97,6 +76,8 @@ function Events(props) {
               </div>
             </div>
             <div className="information_right">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id rhoncus justo. Quisque augue enim, pharetra non augue eu, convallis feugiat odio. Donec non urna non quam pretium gravida. Ut congue metus et ex volutpat semper. Etiam scelerisque risus vitae metus mollis eleifend. Nunc blandit dictum ex, eget egestas nisi vulputate vitae. In non risus nec dolor vehicula facilisis. Nullam in dictum massa. Praesent molestie quam turpis, vitae fringilla est tristique vel. Nullam volutpat purus sit amet vulputate venenatis. Etiam ac augue scelerisque ante semper porttitor. Vestibulum quis consectetur tortor. Proin semper lacinia est sed maximus. Quisque fermentum tempor diam, eu consectetur eros tempus vel. Morbi ut ex risus. Fusce sapien nisi, molestie vitae placerat nec, fringilla vel lectus.<br></br>
+            <br></br>
               {/* Display event promoter */}
               {!event.promoter?.description ? null : (
                 <h3>{event.promoter?.description}</h3>
@@ -108,7 +89,7 @@ function Events(props) {
                   <h3>Place: {event._embedded?.venues?.[0]?.name}</h3>
                   <img
                     src={event._embedded?.venues?.[0]?.images?.[0]?.url}
-                  ></img>
+                    className="resultimage"></img>
                 </div>
               )}
               {/* Display seat map */}
@@ -132,8 +113,11 @@ function Events(props) {
                   <img src={event.seatmap?.staticUrl} className="resultimage" />
                 </div>
               ) : null}
-                    
               {/* Google Maps */}
+            </div>
+          </div>
+        </div>
+      </div>
               <div id="#googleMap">
                 <GoogleMaps
                   apiKey={"AIzaSyDpNWO4_ipZqYPNlP4BbQqbXYui2KCUhrg"}
@@ -143,12 +127,7 @@ function Events(props) {
                   markers={{ lat: lat, lng: lng }}
                 />
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
-
 export default Events;
