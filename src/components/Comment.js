@@ -27,6 +27,7 @@ function Comment() {
       .post("https://ironrest.herokuapp.com/leave", {
         comment: `${comment}`,
         name: `${name}`,
+        date: Date().substr(0, 21),
       })
       .then((res) => {
         setInfo([...res.data.ops, ...info]);
@@ -39,7 +40,9 @@ function Comment() {
     <div className="commentscontainer">
       <h1>Comments </h1>
       <br></br>
-      <button onClick={() => setComment(!comment)}>Leave us a comment!</button><br></br><br></br>
+      <button onClick={() => setComment(!comment)}>Leave us a comment!</button>
+      <br></br>
+      <br></br>
       {comment ? (
         <form onSubmit={saveComment}>
           <div>
@@ -71,7 +74,9 @@ function Comment() {
             return (
               <div>
                 <div className="comments">
-                  <h4>👤 {dat?.name}:</h4>
+                  <h4>
+                    👤 {dat?.name} <span>{dat?.date}</span>
+                  </h4>
                   <p>{dat?.comment}</p>
                 </div>
               </div>
