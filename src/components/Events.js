@@ -106,7 +106,7 @@ function Events(props) {
                   <h3>Place: {event._embedded?.venues?.[0]?.name}</h3>
                   <img
                     src={event._embedded?.venues?.[0]?.images?.[0]?.url}
-                  ></img>
+                    className="resultimage"></img>
                 </div>
               )}
               {/* Display seat map */}

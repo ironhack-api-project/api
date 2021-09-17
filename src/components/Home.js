@@ -28,9 +28,7 @@ function Home(props) {
     let eventCity = e.target[1].value;
     let eventDate = e.target[2].value;
 
-    history.push(
-      `/results?keyword=${eventKeyWord}&city=${eventCity}&date=${eventDate}`
-    );
+    history.push(`/results?keyword=${eventKeyWord}&city=${eventCity}`);
   };
 
   useEffect(() => {
