@@ -48,7 +48,7 @@ function Results(props) {
               return venue.city;
             });
             return (
-              <div key={uniqueEvent.id} className="container">
+              <div key={uniqueEvent.id}>
                 <Link
                   to={{
                     pathname: `/events/${uniqueEvent.id}`,
