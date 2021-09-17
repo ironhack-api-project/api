@@ -36,19 +36,21 @@ function Comment() {
   };
 
   return (
-    <div className="App">
+    <div className="commentscontainer">
       <h1>Comments </h1>
-      <button onClick={() => setComment(!comment)}>Leave us a comment!</button>
+      <br></br>
+      <button onClick={() => setComment(!comment)}>Leave us a comment!</button><br></br><br></br>
       {comment ? (
         <form onSubmit={saveComment}>
           <div>
             <input type="text" placeholder="Your name" />
           </div>
-          <div className="input">
-            <textarea rows="4" cols="50" placeholder="Comment" />
+          <br></br>
+          <div>
+            <textarea placeholder="Comment" />
           </div>
           <div>
-            <button type="submit">Send</button>
+            <button type="submit">Send</button> &nbsp;
             <button type="reset">Reset</button>
           </div>
         </form>
@@ -69,7 +71,7 @@ function Comment() {
             return (
               <div>
                 <div className="comments">
-                  <h4>👤{dat?.name}:</h4>
+                  <h4>👤 {dat?.name}:</h4>
                   <p>{dat?.comment}</p>
                 </div>
               </div>

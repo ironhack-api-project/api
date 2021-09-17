@@ -152,21 +152,59 @@ header h1 {
   padding-top: 50px;
 }
 
-.covid {
-  border-radius: 10px;
-  height: 20vh;
-  background-image: url("./covid.png");
-  background-position: center;
-  background-size: cover;
-  position: relative;
+/* Comments */
+.commentscontainer {
+  margin: 0 auto;
+  width: 500px;
+  padding-top: 50px;
+  background: #ffffff;
+  border: 3px solid #ff7684;
+  box-sizing: border-box;
+  border-radius: 7px;
+  padding: 10px;
+  font-size: 1em;
+  color: #000;
 }
 
-.covid p {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.commentscontainer p {
+  word-wrap: break-word;
+}
+
+.commentscontainer button {
+  background: #3589ad;
+  border-radius: 11px;
+  padding: 10px;
+  color: #fff;
+  font-size: 1em;
+  border: none;
+}
+
+.commentscontainer button:hover {
+  background: #277292;
+  border-radius: 11px;
+  padding: 10px;
+  color: #fff;
+  font-size: 1em;
+  border: none;
+}
+
+.commentscontainer input,
+.commentscontainer select,
+.commentscontainer textarea {
+  background: #ffffff;
+  border: 3px solid #ff7684;
+  box-sizing: border-box;
+  border-radius: 7px;
+  padding: 10px;
+  width: 400px;
+  font-size: 1em;
+  color: #000;
+}
+
+.commentscontainer input:hover,
+.commentscontainer select:hover,
+.commentscontainer textarea:hover {
+  border: 3px solid #da626e;
 }
 
 .information {
@@ -272,7 +310,7 @@ header h1 {
     font-size: 1.5em;
   }
 }
-.googleMap{
+.googleMap {
   display: flex;
   justify-content: center;
 }

@@ -108,6 +108,8 @@ function Home(props) {
       {show ? (
         <div>
           <ShowSuggestions />
+          <br></br>
+          <br></br>
           <Comment />
         </div>
       ) : null}
