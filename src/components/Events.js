@@ -21,7 +21,7 @@ function Events(props) {
       .then((resApi) => {
         setEvent(resApi.data._embedded.events[0]);
         setImg(
-          resApi.data._embedded.events[0].images.filter((im) => im.width > 1000)
+          resApi.data._embedded.events[0].images.find((im) => im.width > 1000)
         );
       });
   }, []);
@@ -29,13 +29,11 @@ function Events(props) {
   let lat = Number(event._embedded?.venues?.[0]?.location?.latitude);
   let lng = Number(event._embedded?.venues?.[0]?.location?.longitude);
 
-  console.log(lat);
-
   return (
     <div>
       <div>
         <div className="eventsimage">
-          <img src={img[0]?.url} width="100%" />
+          <img src={img?.url} width="100%" />
           <div class="eventtitle">
             <h1>{event.name}</h1>
           </div>
