@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import commentimg from '../comment.png';
 
 //https://ironrest.herokuapp.com/
 
@@ -40,6 +41,8 @@ function Comment() {
     <div className="commentscontainer">
       <h1>Comments </h1>
       <br></br>
+      <center><img src={commentimg} /></center>
+      <br></br>
       <button onClick={() => setComment(!comment)}>Leave us a comment!</button>
       <br></br>
       <br></br>
@@ -78,6 +81,9 @@ function Comment() {
                     👤 {dat?.name} <span>{dat?.date}</span>
                   </h4>
                   <p>{dat?.comment}</p>
+                  <br></br>
+                  <hr></hr>
+                  <br></br>
                 </div>
               </div>
             );
