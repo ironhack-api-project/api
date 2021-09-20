@@ -10,7 +10,7 @@ function Comment() {
   let [prevComment, setPrevComment] = useState(false);
 
   useEffect(() => {
-    axios.get("https://ironrest.herokuapp.com/leave").then((res) => {
+    axios.get("https://ironrest.herokuapp.com/comments").then((res) => {
       setInfo(res.data.reverse());
     });
   }, []);
@@ -25,7 +25,7 @@ function Comment() {
       return null;
     }
     axios
-      .post("https://ironrest.herokuapp.com/leave", {
+      .post("https://ironrest.herokuapp.com/comments", {
         comment: `${comment}`,
         name: `${name}`,
         date: Date().substr(0, 21),
@@ -80,7 +80,8 @@ function Comment() {
               <div>
                 <div className="comments">
                   <h4>
-                    👤 {dat?.name} <span className="commentsdate">{dat?.date}</span>
+                    👤 {dat?.name}{" "}
+                    <span className="commentsdate">{dat?.date}</span>
                   </h4>
                   <p>{dat?.comment}</p>
                   <br></br>
