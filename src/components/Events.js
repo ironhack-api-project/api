@@ -106,13 +106,13 @@ function Events(props) {
             </div>
             <div className="information_right">
              {/* Google Maps */}
-            <div className="#googleMap">
+            <div className="googlemaps">
             {lat !== undefined && lng !== undefined ? (
               <GoogleMaps
                 apiKey={"AIzaSyDpNWO4_ipZqYPNlP4BbQqbXYui2KCUhrg"}
                 style={{
                   height: "400px",
-                  width: "1024px",
+                  width: "600px",
                   position: "absolute",
                 }}
                 zoom={15}
