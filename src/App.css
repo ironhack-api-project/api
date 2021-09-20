@@ -299,6 +299,11 @@ footer a {
   font-weight: bold;
   color: #da626e;
 }
+@media only screen and (min-width: 600px) {
+.seat{
+padding-top: 70%;
+}
+}
 
 /* Mobile Responsive CSS */
 @media only screen and (max-width: 600px) {
