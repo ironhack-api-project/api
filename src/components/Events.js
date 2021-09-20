@@ -105,6 +105,7 @@ function Events(props) {
               </div>
             </div>
             <div className="information_right">
+             {/* Google Maps */}
             <div className="#googleMap">
             {lat !== undefined && lng !== undefined ? (
               <GoogleMaps
@@ -146,7 +147,7 @@ function Events(props) {
                   <img src={event.seatmap?.staticUrl} className="resultimage" />
                 </div>
               ) : null}
-              {/* Google Maps */}
+             
             </div>
           </div>
           <br></br>

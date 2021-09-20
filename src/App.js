@@ -26,6 +26,12 @@ function App() {
         <Route exact path="/events/:eventId" component={Events} />
         <Route exact path="/results" component={Results} />
       </Switch>
+      <br></br>
+      <footer>
+        <div className="footercontainer">
+          footer goes here
+        </div>
+      </footer>
     </div>
   );
 }
