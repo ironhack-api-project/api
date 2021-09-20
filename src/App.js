@@ -29,7 +29,19 @@ function App() {
       <br></br>
       <footer>
         <div className="footercontainer">
-          Designed by <a href="https://github.com/bruno1406" target="_blank">Bruno</a>, <a href="https://github.com/darioformoso" target="_blank">Dario</a> and <a href="https://github.com/michaelporreca" target="_blank">Michael</a>.
+          Designed by{" "}
+          <a href="https://github.com/brunobarbagelata" target="_blank">
+            Bruno
+          </a>
+          ,{" "}
+          <a href="https://github.com/darioformoso" target="_blank">
+            Dario
+          </a>{" "}
+          and{" "}
+          <a href="https://github.com/michaelporreca" target="_blank">
+            Michael
+          </a>
+          .
         </div>
       </footer>
     </div>
