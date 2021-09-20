@@ -200,12 +200,21 @@ header h1 {
   width: 400px;
   font-size: 1em;
   color: #000;
+  font-family: "Roboto", sans-serif;
 }
 
 .commentscontainer input:hover,
 .commentscontainer select:hover,
 .commentscontainer textarea:hover {
   border: 3px solid #da626e;
+}
+
+.commentsdate {
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  color: rgb(104, 104, 104);
+  letter-spacing: 0.5px;
 }
 
 .information {

@@ -80,7 +80,7 @@ function Comment() {
               <div>
                 <div className="comments">
                   <h4>
-                    👤 {dat?.name} <span>{dat?.date}</span>
+                    👤 {dat?.name} <span className="commentsdate">{dat?.date}</span>
                   </h4>
                   <p>{dat?.comment}</p>
                   <br></br>
