@@ -58,7 +58,7 @@ function Events(props) {
             <div className="information_left">
               {/* display venue information */}
               {!event._embedded?.venues?.[0]?.name ? null : (
-                <div>
+                <div className="venue">
                   <h3>Place: {event._embedded?.venues?.[0]?.name}</h3>
                   <img
                     src={event._embedded?.venues?.[0]?.images?.[0]?.url}
@@ -66,6 +66,7 @@ function Events(props) {
                   ></img>
                 </div>
               )}
+              <br></br>
               <div className="dateandtime">
                 <h3>Address: {event._embedded?.venues?.[0]?.address?.line1}</h3>
                 <br></br>
@@ -118,22 +119,18 @@ function Events(props) {
               consectetur eros tempus vel. Morbi ut ex risus. Fusce sapien nisi,
               molestie vitae placerat nec, fringilla vel lectus.<br></br>
               <br></br>
-              {/* Display event promoter */}
-              {!event.promoter?.description ? null : (
-                <h3>{event.promoter?.description}</h3>
-              )}
-              <br></br>
+             
             
               {/* Display seat map */}
-              
-              {!seatMap ? (
+              {!event.seatmap?.staticUrl ? null: (
+              !seatMap ? (
                 <button
                   className="seatmapbutton"
                   onClick={() => setSeatMap(!seatMap)}
                 >
                   See Seatmap
                 </button>
-              ) : null}
+              ) : null)}
               {seatMap ? (
                 <div>
                   <button
@@ -149,6 +146,7 @@ function Events(props) {
               {/* Google Maps */}
             </div>
           </div>
+          <br></br>
           <div className="#googleMap">
             {lat !== undefined && lng !== undefined ? (
               <GoogleMaps
