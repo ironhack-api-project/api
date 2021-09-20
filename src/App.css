@@ -108,7 +108,7 @@ header h1 {
 
 .resultimage,
 .resultimage img {
-  width: 500px;
+  max-width: 100%;
 }
 
 .events {
@@ -223,6 +223,12 @@ header h1 {
   font-size: 1em;
   color: rgb(104, 104, 104);
   letter-spacing: 0.5px;
+}
+
+.venue {
+  background-color: #e3e3e3;
+  padding: 20px;
+  width: 80%;
 }
 
 .information {
