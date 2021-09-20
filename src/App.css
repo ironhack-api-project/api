@@ -285,6 +285,7 @@ header h1 {
 
 footer {
   background-color: #e3e3e3;
+  text-align: center;
 }
 
 .footercontainer {
@@ -292,6 +293,11 @@ footer {
   width: 1024px;
   padding-top: 50px;
   padding-bottom: 50px;
+}
+
+footer a {
+  font-weight: bold;
+  color: #da626e;
 }
 
 /* Mobile Responsive CSS */
@@ -353,6 +359,6 @@ footer {
   display: flex;
   justify-content: center;
 }
-.seat{
-  padding-top :70%;
+.seat {
+  padding-top: 70%;
 }
