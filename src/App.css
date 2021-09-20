@@ -353,3 +353,6 @@ footer {
   display: flex;
   justify-content: center;
 }
+.seat{
+  padding-top :70%;
+}

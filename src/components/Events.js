@@ -124,7 +124,7 @@ function Events(props) {
             )}
           </div>
              
-            
+            <div className="seat">
               {/* Display seat map */}
               {!event.seatmap?.staticUrl ? null: (
               !seatMap ? (
@@ -147,7 +147,7 @@ function Events(props) {
                   <img src={event.seatmap?.staticUrl} className="resultimage" />
                 </div>
               ) : null}
-             
+              </div>
             </div>
           </div>
           <br></br>
