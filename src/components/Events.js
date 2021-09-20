@@ -12,7 +12,7 @@ function Events(props) {
   const [img, setImg] = useState([]);
   const history = useHistory();
   const [lat, setLat] = useState(undefined);
-  const [lng,setLng] = useState(undefined);
+  const [lng, setLng] = useState(undefined);
   useEffect(() => {
     axios
       .get(
@@ -24,21 +24,26 @@ function Events(props) {
           resApi.data._embedded.events[0].images.find((im) => im.width > 1000)
         );
         setLat(
-          Number(resApi.data._embedded?.events[0]._embedded?.venues?.[0]?.location?.latitude)
-        )
+          Number(
+            resApi.data._embedded?.events[0]._embedded?.venues?.[0]?.location
+              ?.latitude
+          )
+        );
         setLng(
-          Number(resApi.data._embedded?.events[0]._embedded?.venues?.[0]?.location?.longitude)
-        )
-        console.log(resApi.data._embedded?.events[0]._embedded?.venues?.[0]?.location?.longitude)
+          Number(
+            resApi.data._embedded?.events[0]._embedded?.venues?.[0]?.location
+              ?.longitude
+          )
+        );
       });
   }, []);
-  
+
   return (
     <div>
       <div>
         <div className="eventsimage">
           <img src={img?.url} />
-          <div class="eventtitle">
+          <div className="eventtitle">
             <h1>{event.name}</h1>
           </div>
         </div>
@@ -66,7 +71,11 @@ function Events(props) {
               <br></br>
               <div className="price">
                 {/* Display Price Range */}
-                {!event.priceRanges?.[0]?.min ? (<p><img src={price} /> Price on Ticketmaster</p>) : (
+                {!event.priceRanges?.[0]?.min ? (
+                  <p>
+                    <img src={price} /> Price on Ticketmaster
+                  </p>
+                ) : (
                   <h4>
                     <img src={price} /> Price Ranges: $
                     {event.priceRanges?.[0]?.min} to $
@@ -83,8 +92,20 @@ function Events(props) {
               </div>
             </div>
             <div className="information_right">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id rhoncus justo. Quisque augue enim, pharetra non augue eu, convallis feugiat odio. Donec non urna non quam pretium gravida. Ut congue metus et ex volutpat semper. Etiam scelerisque risus vitae metus mollis eleifend. Nunc blandit dictum ex, eget egestas nisi vulputate vitae. In non risus nec dolor vehicula facilisis. Nullam in dictum massa. Praesent molestie quam turpis, vitae fringilla est tristique vel. Nullam volutpat purus sit amet vulputate venenatis. Etiam ac augue scelerisque ante semper porttitor. Vestibulum quis consectetur tortor. Proin semper lacinia est sed maximus. Quisque fermentum tempor diam, eu consectetur eros tempus vel. Morbi ut ex risus. Fusce sapien nisi, molestie vitae placerat nec, fringilla vel lectus.<br></br>
-            <br></br>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id
+              rhoncus justo. Quisque augue enim, pharetra non augue eu,
+              convallis feugiat odio. Donec non urna non quam pretium gravida.
+              Ut congue metus et ex volutpat semper. Etiam scelerisque risus
+              vitae metus mollis eleifend. Nunc blandit dictum ex, eget egestas
+              nisi vulputate vitae. In non risus nec dolor vehicula facilisis.
+              Nullam in dictum massa. Praesent molestie quam turpis, vitae
+              fringilla est tristique vel. Nullam volutpat purus sit amet
+              vulputate venenatis. Etiam ac augue scelerisque ante semper
+              porttitor. Vestibulum quis consectetur tortor. Proin semper
+              lacinia est sed maximus. Quisque fermentum tempor diam, eu
+              consectetur eros tempus vel. Morbi ut ex risus. Fusce sapien nisi,
+              molestie vitae placerat nec, fringilla vel lectus.<br></br>
+              <br></br>
               {/* Display event promoter */}
               {!event.promoter?.description ? null : (
                 <h3>{event.promoter?.description}</h3>
@@ -96,7 +117,8 @@ function Events(props) {
                   <h3>Place: {event._embedded?.venues?.[0]?.name}</h3>
                   <img
                     src={event._embedded?.venues?.[0]?.images?.[0]?.url}
-                    className="resultimage"></img>
+                    className="resultimage"
+                  ></img>
                 </div>
               )}
               {/* Display seat map */}
@@ -123,22 +145,25 @@ function Events(props) {
               {/* Google Maps */}
             </div>
           </div>
-      {/* {console.log(lat,lng)} */}
-              <div className="#googleMap">
-            {lat!==undefined && lng!==undefined ?
-    (<GoogleMaps
-      apiKey={"AIzaSyDpNWO4_ipZqYPNlP4BbQqbXYui2KCUhrg"}
-      style={{ height: "400px", width: "1024px" , position:"absolute"}}
-      zoom={15}
-      center={{ lat: lat , lng: lng }}
-      markers={{ lat: lat  , lng: lng }}
-    />
-      
-  ) : "loading"        
-            }
+          <div className="#googleMap">
+            {lat !== undefined && lng !== undefined ? (
+              <GoogleMaps
+                apiKey={"AIzaSyDpNWO4_ipZqYPNlP4BbQqbXYui2KCUhrg"}
+                style={{
+                  height: "400px",
+                  width: "1024px",
+                  position: "absolute",
+                }}
+                zoom={15}
+                center={{ lat: lat, lng: lng }}
+                markers={{ lat: lat, lng: lng }}
+              />
+            ) : (
+              "loading"
+            )}
+          </div>
         </div>
       </div>
-   </div>
     </div>
   );
 }
