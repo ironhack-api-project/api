@@ -75,10 +75,12 @@ function Home(props) {
                   <div>
                     <h2>{uniqueEvent.name}</h2>
                   </div>
-                  <div>
+                  <div className="eventsdate">
                     <strong>Date</strong>: {uniqueEvent.dates.start.localDate}
                   </div>
                 </Link>
+                <br></br>
+                <br></br>
               </div>
             );
           })}
