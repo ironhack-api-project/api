@@ -60,16 +60,14 @@ function Results(props) {
                   <div>
                     <h2>{uniqueEvent.name}</h2>
                   </div>
-                  <div>
-                    <strong>City</strong>: {city[0].name}
-                  </div>
-                  <div>
-                    <strong>Time</strong>: {uniqueEvent.dates.start.localTime}
-                  </div>
-                  <div>
+                  <div className="eventsdate">
+                    <strong>City</strong>: {city[0].name}<br></br>
+                    <strong>Time</strong>: {uniqueEvent.dates.start.localTime}<br></br>
                     <strong>Date</strong>: {uniqueEvent.dates.start.localDate}
                   </div>
                 </Link>
+                <br></br>
+                <br></br>
               </div>
             );
           })}
