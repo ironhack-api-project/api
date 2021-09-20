@@ -125,6 +125,7 @@ function Events(props) {
               <br></br>
             
               {/* Display seat map */}
+              
               {!seatMap ? (
                 <button
                   className="seatmapbutton"
