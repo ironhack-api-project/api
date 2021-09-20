@@ -37,6 +37,7 @@ function Events(props) {
         );
       });
   }, []);
+  
 
   return (
     <div>
@@ -55,9 +56,20 @@ function Events(props) {
           <br></br>
           <div className="information">
             <div className="information_left">
+              {/* display venue information */}
+              {!event._embedded?.venues?.[0]?.name ? null : (
+                <div>
+                  <h3>Place: {event._embedded?.venues?.[0]?.name}</h3>
+                  <img
+                    src={event._embedded?.venues?.[0]?.images?.[0]?.url}
+                    className="resultimage"
+                  ></img>
+                </div>
+              )}
               <div className="dateandtime">
                 <h3>Address: {event._embedded?.venues?.[0]?.address?.line1}</h3>
                 <br></br>
+                
                 {/* Display Event Date */}
                 {!event.dates?.start?.localDate ? null : (
                   <h3>Date: {event.dates?.start?.localDate}</h3>
@@ -111,16 +123,7 @@ function Events(props) {
                 <h3>{event.promoter?.description}</h3>
               )}
               <br></br>
-              {/* display venue information */}
-              {!event._embedded?.venues?.[0]?.name ? null : (
-                <div>
-                  <h3>Place: {event._embedded?.venues?.[0]?.name}</h3>
-                  <img
-                    src={event._embedded?.venues?.[0]?.images?.[0]?.url}
-                    className="resultimage"
-                  ></img>
-                </div>
-              )}
+            
               {/* Display seat map */}
               {!seatMap ? (
                 <button
