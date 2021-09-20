@@ -105,20 +105,23 @@ function Events(props) {
               </div>
             </div>
             <div className="information_right">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id
-              rhoncus justo. Quisque augue enim, pharetra non augue eu,
-              convallis feugiat odio. Donec non urna non quam pretium gravida.
-              Ut congue metus et ex volutpat semper. Etiam scelerisque risus
-              vitae metus mollis eleifend. Nunc blandit dictum ex, eget egestas
-              nisi vulputate vitae. In non risus nec dolor vehicula facilisis.
-              Nullam in dictum massa. Praesent molestie quam turpis, vitae
-              fringilla est tristique vel. Nullam volutpat purus sit amet
-              vulputate venenatis. Etiam ac augue scelerisque ante semper
-              porttitor. Vestibulum quis consectetur tortor. Proin semper
-              lacinia est sed maximus. Quisque fermentum tempor diam, eu
-              consectetur eros tempus vel. Morbi ut ex risus. Fusce sapien nisi,
-              molestie vitae placerat nec, fringilla vel lectus.<br></br>
-              <br></br>
+            <div className="#googleMap">
+            {lat !== undefined && lng !== undefined ? (
+              <GoogleMaps
+                apiKey={"AIzaSyDpNWO4_ipZqYPNlP4BbQqbXYui2KCUhrg"}
+                style={{
+                  height: "400px",
+                  width: "1024px",
+                  position: "absolute",
+                }}
+                zoom={15}
+                center={{ lat: lat, lng: lng }}
+                markers={{ lat: lat, lng: lng }}
+              />
+            ) : (
+              "loading"
+            )}
+          </div>
              
             
               {/* Display seat map */}
@@ -147,23 +150,7 @@ function Events(props) {
             </div>
           </div>
           <br></br>
-          <div className="#googleMap">
-            {lat !== undefined && lng !== undefined ? (
-              <GoogleMaps
-                apiKey={"AIzaSyDpNWO4_ipZqYPNlP4BbQqbXYui2KCUhrg"}
-                style={{
-                  height: "400px",
-                  width: "1024px",
-                  position: "absolute",
-                }}
-                zoom={15}
-                center={{ lat: lat, lng: lng }}
-                markers={{ lat: lat, lng: lng }}
-              />
-            ) : (
-              "loading"
-            )}
-          </div>
+       
         </div>
       </div>
     </div>
