@@ -354,11 +354,53 @@ footer a {
     text-align: center;
     font-size: 1.5em;
   }
-}
-.googleMap {
-  display: flex;
-  justify-content: center;
-}
-.seat {
-  padding-top: 70%;
+
+  .commentscontainer {
+    margin: 0 auto;
+    width: 100%;
+    padding-top: 50px;
+    background: #ffffff;
+    border: 3px solid #ff7684;
+    box-sizing: border-box;
+    border-radius: 7px;
+    padding: 10px;
+    font-size: 1em;
+    color: #000;
+  }
+
+  .commentscontainer input,
+  .commentscontainer select,
+  .commentscontainer textarea {
+    background: #ffffff;
+    border: 3px solid #ff7684;
+    box-sizing: border-box;
+    border-radius: 7px;
+    padding: 10px;
+    width: 100%;
+    font-size: 1em;
+    color: #000;
+    font-family: "Roboto", sans-serif;
+  }
+
+  .googlemaps {
+    display: none;
+  }
+
+  footer {
+    background-color: #e3e3e3;
+    text-align: center;
+    width: 100%;
+  }
+
+  .footercontainer {
+    margin: 0 auto;
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  footer a {
+    font-weight: bold;
+    color: #da626e;
+  }
 }
