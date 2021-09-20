@@ -150,7 +150,7 @@ function Events(props) {
             </div>
           </div>
           <br></br>
-          <div className="#googleMap">
+          <div className="googlemaps">
             {lat !== undefined && lng !== undefined ? (
               <GoogleMaps
                 apiKey={"AIzaSyDpNWO4_ipZqYPNlP4BbQqbXYui2KCUhrg"}
