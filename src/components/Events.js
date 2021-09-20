@@ -119,21 +119,18 @@ function Events(props) {
               consectetur eros tempus vel. Morbi ut ex risus. Fusce sapien nisi,
               molestie vitae placerat nec, fringilla vel lectus.<br></br>
               <br></br>
-              {/* Display event promoter */}
-              {!event.promoter?.description ? null : (
-                <h3>{event.promoter?.description}</h3>
-              )}
-              <br></br>
+             
             
               {/* Display seat map */}
-              {!seatMap ? (
+              {!event.seatmap?.staticUrl ? null: (
+              !seatMap ? (
                 <button
                   className="seatmapbutton"
                   onClick={() => setSeatMap(!seatMap)}
                 >
                   See Seatmap
                 </button>
-              ) : null}
+              ) : null)}
               {seatMap ? (
                 <div>
                   <button
